@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('rapport_des_activites', function (Blueprint $table) {
+        Schema::create('rapports_des_activites', function (Blueprint $table) {
             $table->id();
             $table->foreignId('idActivite')->constraint('activite')->onDelete('cascade')->onUpdate;
             $table->integer('annee');

@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('actions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idActivites')->constraint('activites')->onDelete('cascade')->onUpdate;
-            $table->integer('dateAction');
+            $table->foreignId('idActivite')->constraint('activites')->onDelete('cascade')->onUpdate;
+            $table->date('dateAction');
             $table->string('titre',200);
             $table->string('adresseAction', 300);
             $table->text('contenu');

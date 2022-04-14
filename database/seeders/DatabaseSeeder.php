@@ -38,16 +38,16 @@ class DatabaseSeeder extends Seeder
             $activite=Activites::create(['type'=>'auto-ecole','nom'=>'villiers sur marne','idVille'=>'1']);
 
             Actions::create([
-                'dateAction'=>'31/05/2022',
+                'dateAction'=>'2022-05-31',
                 'titre'=>'MonTitre',
                 'contenu'=>'MonContenu',
                 'image'=>'MonImage',
                 'adresseAction'=>'11 rue feederic passy',
                 'idActivite'=>'2'   ]);
 
-            RapportsDesActivites::create(['annee'=>'2019','fichier'=>'lien','idActivite'=>'2']);
-            RapportsDesActivites::create(['annee'=>'2020','fichier'=>'lien','idActivite'=>'2']);
-            RapportsDesActivites::create(['annee'=>'2021','fichier'=>'lien','idActivite'=>'2']);
+            RapportsDesActivites::create(['annee'=>'2019','lienFichier'=>'lien','idActivite'=>'2']);
+            RapportsDesActivites::create(['annee'=>'2020','lienFichier'=>'lien','idActivite'=>'2']);
+            RapportsDesActivites::create(['annee'=>'2021','lienFichier'=>'lien','idActivite'=>'2']);
 
 
 
