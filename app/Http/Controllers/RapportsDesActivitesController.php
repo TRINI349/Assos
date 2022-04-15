@@ -47,7 +47,7 @@ class RapportsDesActivitesController extends Controller
             $rapportsDesActivites->type = $request->type;
 
             $rapportsDesActivites->save();
-        return redirect()->action([RapportsDesActivitesController::class, 'index'])->with('message', 'Rapport ajouter');
+        return redirect('Rapport')->with('message', 'Rapport ajouter');
     }
 
     /**
@@ -104,8 +104,6 @@ class RapportsDesActivitesController extends Controller
     {
         $rapportsDesActivites = RapportsDesActivites::findOrFail($id);
         $rapportsDesActivites->delete();
-        return redirect()->action(
-       [RapportsDesActivitesController::class, 'index']
-        )->with('message', 'Rapport supprimer');
+        return redirect('showRapport')->with('message', 'Rapport supprimer');
     }
 }

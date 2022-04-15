@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ActionsController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ActionsController;
 use App\Http\Controllers\autoEcoleController;
 use App\Http\Controllers\PreventionSpecialiseeController;
 
@@ -24,12 +25,13 @@ Route::get('/', function () {
 Auth::routes();
 
 
-Route::resource('',ActivitesController::class);
-Route::resource('Prévention-Spécialisée', PreventionSpecialiseeController::class);
-Route::resource('Auto-école', autoEcoleController::class);
-Route::resource('Actions',ActionsController::class);
+Route::resource('Activite',ActivitesController::class);
 
+Route::resource('Actions',ActionsController::class);
 //Route::get('Actions',[ActionsConctroller::class,'index'])->name
+
+//Route::get("Action/creatAction",[ActionController::class,"create"]);
+Route::resource('creatAction', ActionController::class);
 
 
 

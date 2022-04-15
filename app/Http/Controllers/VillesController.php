@@ -26,7 +26,7 @@ class VillesController extends Controller
      */
     public function create()
     {
-        return view('villesCreation');
+        return view('creatVille');
     }
 
     /**
@@ -37,7 +37,7 @@ class VillesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -46,10 +46,21 @@ class VillesController extends Controller
      * @param  \App\Models\Villes  $villes
      * @return \Illuminate\Http\Response
      */
+
     public function show(Villes $villes)
     {
-        //
+        $validated = $request->validate([
+            'nom' => 'string|required',
+
+        ]);
+
+            $villes = new Villes();
+            $villes->name = $request->name;
+
+            $villes->save();
+        return redirect('Ville')->with('message', 'Ville ajouter');
     }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -57,9 +68,12 @@ class VillesController extends Controller
      * @param  \App\Models\Villes  $villes
      * @return \Illuminate\Http\Response
      */
+
     public function edit(Villes $villes)
     {
-        //
+        $villes = Villes::findOrFail($id);
+
+        return view('editVilles', compact('villes'));
     }
 
     /**
@@ -71,7 +85,14 @@ class VillesController extends Controller
      */
     public function update(Request $request, Villes $villes)
     {
-        //
+
+        $villes = Villes::findOrFail($id);
+        $villes->nom = $request->nom;
+
+        $villes->save();
+        return redirect()->action(
+            [Villes::class, 'index']
+        )->with('message', 'Ville à jour');
     }
 
     /**
@@ -82,6 +103,8 @@ class VillesController extends Controller
      */
     public function destroy(Villes $villes)
     {
-        //
+        $villes = Villes::findOrFail($id);
+        $villes->delete();
+        return redirect('showVilles')->with('message', 'Ville supprimer');
     }
 }

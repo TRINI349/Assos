@@ -16,7 +16,7 @@ class ActiviteControllerController extends Controller
     public function index()
     {
         $activites=Activites::all();
-        return view('home',compact('activites')); //["actions"=>"$actions"]
+        return view('Activite.Activite',compact('activites')); //["actions"=>"$actions"]
     }
 
     /**
@@ -26,7 +26,7 @@ class ActiviteControllerController extends Controller
      */
     public function create()
     {
-        return view('');
+        return view('Activite.creatActivite');
     }
 
     /**
@@ -40,29 +40,21 @@ class ActiviteControllerController extends Controller
 
         //Validation des champs/attributs
 
-        $attributs = $request->validate([
+        $validated = $request->validate([
             'name' => 'required|min:2|max:100|string',
             'type' => 'required|string|min:4'
         ]);
 
-        //Enregistrement du pays dans la table
-        Pays::create($attributs);
-        //redirection vers le dashboard
-       return redirect("");
-    }
 
-    public function store(Request $request)
-    {
-        //Validation des champs/attributs
-        $attributs=$request->validate(
-            ["nom"=>"required|min:2|max:100|string|unique:Pays,nom",
-            "population"=>"numeric|required|min:0",
-            "region"=>"required|string|min:4"]
-        );
-        //Enregistrement du pays dans la table
-        Pays::create($attributs);
-        //redirection vers le dashboard
-       return redirect("/admin/pays");
+            $activite = new Actions();
+            $activite->name= $request->name;
+            $activite->type = $request->type;
+ //Enregistrement des Activites  dans la table
+            $activite->save();
+ //redirection vers le dashboard
+            return redirect("Activite")->with('message', 'Activite ajouter');
+}
+
 
     /**
      * Display the specified resource.
@@ -103,9 +95,8 @@ class ActiviteControllerController extends Controller
        $activites->name = $request->name;
        $activites->type = $request->type;
        $activites->save();
-        return redirect()->action(
-            [ActiviteController::class, 'index']
-        )->with('message', 'Activite à jour');
+
+        return redirect('Activite')->with('message','Activite à jour');
 
     /**
      * Remove the specified resource from storage.
@@ -119,8 +110,7 @@ class ActiviteControllerController extends Controller
     {
         $activites = Activites::findOrFail($id);
         $activites->delete();
-        return redirect()->action(
-       [ActiviteController::class, 'index']
-        )->with('message', 'Activite supprimer');
+        return redirect('Activite')
+        ->with('message', 'Activite supprimer');
     }
 }
