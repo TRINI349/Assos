@@ -16,8 +16,8 @@ class ActionsController extends Controller
      */
     public function index()
     {
-        $Actions=Actions::all();
-        return view('Action'.'Actions',["actions"=>"$actions"]);
+        $actions=Actions::all();
+        return view('Action'.'Action',["actions"=>$actions]);
     }
 
 
@@ -30,7 +30,7 @@ class ActionsController extends Controller
     public function create()
     {
 
-        return view('Actions');
+        return view('Action');
     }
 
     /**
@@ -46,6 +46,7 @@ class ActionsController extends Controller
         $attributs=$request->validate(
             ["titre"=>"required|min:2|max:100|string",
                 "dateAction"=>"date|required",
+                "adresseAction"=>"string|required",
                 "contenue"=>"required|string",
                 "image"=>"required|image"]);
 
@@ -53,7 +54,7 @@ class ActionsController extends Controller
         $cheminImage=$request->file("#")->store("actions");
 
              //Remplace le chemin de l'image dans les attributs
-        $attributs["#"]=$cheminImage;
+        $attributs["monImage"]=$cheminImage;
 
             //Enregistrement de l'action dans la table
         Actions::create($attributs);
@@ -70,8 +71,7 @@ class ActionsController extends Controller
      */
     public function show(Actions $actions)
     {
-        $actions = Actions::findOrFail($id);
-        return view('showAction', compact('action'));
+        //
     }
 
     /**
@@ -86,7 +86,7 @@ class ActionsController extends Controller
 
         //Afficher un formulaire modification pré-rempli
 
-        return view('Actions.editAction', ["UneAction"=>$actions]);
+        return view('Action.modifierAction', ["uneAction"=>$actions]);
     }
 
 
@@ -101,25 +101,33 @@ class ActionsController extends Controller
     public function update(Request $request, Actions $actions)
     {
 
-       $actions = Actions::findOrFail($id);
-       $actions->dateAction = $request->dateAction;
-       $actions->titre = $request->titre;
-       $actions->content = $request->content;
-       $actions->adresseAction = $request->adresseAction;
-       $actions->image = $request->image;
-       $actions->save();
-        return redirect('Action')->with('message', 'Action à jour');
-    }
+        $actions=Actions::find($request->id);
 
-    $pays=Pays::find($request->id);
+        $attributs = $request->validate(
 
-    $attributs = $request->validate(
-      [
-          "nom" => "required|min:2|max:100|string",
-          "population" => "numeric|required|min:0",
-          "region" => "required|string|min:4",
-          "drapeau"=>"image"
-      ]
+        [
+            "titre"=>"required|min:2|max:100|string",
+            "dateAction"=>"date|required",
+            "adresseAction"=>"string|required",
+            "contenue"=>"required|string",
+            "image"=>"monImage"
+        ]
+    );
+
+    if($request->monImage){
+
+        //Enregistre sur le serveur le drapeau
+        $cheminImage=$request->file("monImage")->store("action");
+        //Remplace le chemin de l'image dans les attributs
+        $attributs["monImage"]=$cheminImage;
+        }
+        //Mettre a jour le pays avec de nouveau attributs
+        $pays->update($attributs);
+        //Le message flash
+        session()->flash("success","$actions->titre a bien était modifier ! ");
+        return redirect("/Actions");
+        }
+
 
     /**
      * Remove the specified resource from storage.

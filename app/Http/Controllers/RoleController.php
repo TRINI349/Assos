@@ -14,7 +14,8 @@ class RoleController extends Controller
      */
     public function index()
     {
-        //
+        $role=Role::all();
+        return view('Role'.'Role',["role"=>$role]);
     }
 
     /**
@@ -24,7 +25,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('Role');
     }
 
     /**
@@ -35,7 +36,18 @@ class RoleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $attributs=$request->validate(
+            [
+                "nom"=>"string|required"
+            ]);
+
+
+            //Enregistrement de l'action dans la table
+        Role::create($attributs);
+
+        //redirection vers le dashboard
+    return redirect("Role.creatRole");
+
     }
 
     /**
@@ -55,9 +67,11 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function edit(Role $role)
+    public function edit($id)
     {
-        //
+        $role=Role::find($id);
+
+        return view('Role.modifierRole', ["unRole"=>$role]);
     }
 
     /**
@@ -67,9 +81,21 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Role $role)
+    public function update(Request $request,$id)
     {
-        //
+        $role=Role::find($request->id);
+
+        $attributs = $request->validate(
+
+        [
+
+            "nom"=>"string|required"
+        ]);
+
+        $role->update($attributs);
+        //Le message flash
+        session()->flash("success","$role->nom a bien était modifier ! ");
+        return redirect("/Role");
     }
 
     /**
@@ -78,8 +104,11 @@ class RoleController extends Controller
      * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Role $role)
+    public function destroy($id)
     {
-        //
+        $role = Role::findOrFail($id);
+        $role->delete();
+        return redirect('Role')
+        ->with('message', 'Le role est bien  supprimer');
     }
 }

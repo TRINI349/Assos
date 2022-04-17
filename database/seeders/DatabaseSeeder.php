@@ -2,11 +2,12 @@
 
 namespace Database\Seeders;
 
+use App\Models\Role;
+
 use App\Models\Villes;
-
 use App\Models\Actions;
-use App\Models\Activites;
 
+use App\Models\Activites;
 use Illuminate\Database\Seeder;
 use App\Models\RapportDesActivites;
 use App\Models\RapportsDesActivites;
@@ -41,13 +42,16 @@ class DatabaseSeeder extends Seeder
                 'dateAction'=>'2022-05-31',
                 'titre'=>'MonTitre',
                 'contenu'=>'MonContenu',
-                'image'=>'MonImage',
+                'image'=>'monImage',
                 'adresseAction'=>'11 rue feederic passy',
                 'idActivite'=>'2'   ]);
 
             RapportsDesActivites::create(['annee'=>'2019','lienFichier'=>'lien','idActivite'=>'2']);
             RapportsDesActivites::create(['annee'=>'2020','lienFichier'=>'lien','idActivite'=>'2']);
             RapportsDesActivites::create(['annee'=>'2021','lienFichier'=>'lien','idActivite'=>'2']);
+
+            Role::create(['nom'=>'superAdmin']);
+            Role::create(['nom'=>'admin']);
 
 
 

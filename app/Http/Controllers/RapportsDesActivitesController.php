@@ -16,7 +16,7 @@ class RapportsDesActivitesController extends Controller
     public function index()
     {
         $rapportsDesActivites=RapportsDesActivites::all();
-        return view('RapportDesActivites',compact('rapportDesActivites'));
+        return view('RapportsDesActivites',['rapportsDesActivites'=>$rapportsDesActivites]);
     }
 
     /**
@@ -26,7 +26,8 @@ class RapportsDesActivitesController extends Controller
      */
     public function create()
     {
-        return view('RapportCreation');
+        return view('RapportsDesActivites.creatRapport
+        ');
     }
 
     /**
@@ -58,8 +59,7 @@ class RapportsDesActivitesController extends Controller
      */
     public function show(RapportsDesActivites $rapportsDesActivites)
     {
-        $rapportsDesActivites = RapportsDesActivites::findOrFail($id);
-        return view('showRapportsDesActivites', compact('rapportsDesActivites'));
+       //
     }
 
     /**

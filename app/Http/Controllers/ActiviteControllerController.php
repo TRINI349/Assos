@@ -16,7 +16,7 @@ class ActiviteControllerController extends Controller
     public function index()
     {
         $activites=Activites::all();
-        return view('Activite.Activite',compact('activites')); //["actions"=>"$actions"]
+        return view('Activite.Activite',["activites"=>$activites]);
     }
 
     /**
@@ -39,21 +39,17 @@ class ActiviteControllerController extends Controller
     {
 
         //Validation des champs/attributs
+        $attributs=$request->validate(
+            ["type"=>"required|min:2|max:100|string",
+                "nom"=>"string|required"
+            ]);
 
-        $validated = $request->validate([
-            'name' => 'required|min:2|max:100|string',
-            'type' => 'required|string|min:4'
-        ]);
+            //Enregistrement de l'action dans la table
+        Activites::create($attributs);
 
-
-            $activite = new Actions();
-            $activite->name= $request->name;
-            $activite->type = $request->type;
- //Enregistrement des Activites  dans la table
-            $activite->save();
- //redirection vers le dashboard
-            return redirect("Activite")->with('message', 'Activite ajouter');
-}
+            //redirection vers le dashboard
+        return redirect("Activite.creatActivite");
+    }
 
 
     /**
@@ -64,8 +60,7 @@ class ActiviteControllerController extends Controller
      */
     public function show(ActiviteController $activiteController)
     {
-        $activites = Activites::findOrFail($id);
-        return view('showActivite', compact('activite'));
+       //
     }
 
     /**
@@ -74,11 +69,12 @@ class ActiviteControllerController extends Controller
      * @param  \App\Models\ActiviteController  $activiteController
      * @return \Illuminate\Http\Response
      */
-    public function edit(ActiviteController $activiteController)
-    {
-        $activites = Activites::findOrFail($id);
 
-        return view('editActivite', compact('activite'));
+    public function edit($id)
+    {
+        $activites=Activites::find($id);
+
+        return view('Activite.modifierActivite', ["uneActivite"=>$activites]);
     }
 
     /**
@@ -91,12 +87,26 @@ class ActiviteControllerController extends Controller
 
     public function update(Request $request, $id)
     {
-       $activites = Activites::findOrFail($id);
-       $activites->name = $request->name;
-       $activites->type = $request->type;
-       $activites->save();
 
-        return redirect('Activite')->with('message','Activite à jour');
+
+
+        $activites=Activites::find($request->id);
+
+        $attributs = $request->validate(
+
+        [
+            "type"=>"required|min:2|max:100|string",
+            "nom"=>"string|required"
+        ]);
+
+        $activites->update($attributs);
+        //Le message flash
+        session()->flash("success","$activites->type a bien était modifier ! ");
+        return redirect("/Activite");
+    }
+
+
+
 
     /**
      * Remove the specified resource from storage.
