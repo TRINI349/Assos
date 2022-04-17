@@ -17,9 +17,10 @@ class ActionsController extends Controller
     public function index()
     {
         $Actions=Actions::all();
-        return view('Actions',compact('actions')); //["actions"=>"$actions"]
-
+        return view('Action'.'Actions',["actions"=>"$actions"]);
     }
+
+
 
     /**
      * Show the form for creating a new resource.
@@ -35,29 +36,30 @@ class ActionsController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param App\http\Requests\ArticleRequest  $request
+     ** @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(ActionRequest $request)
+    public function store(Request $request)
     {
 
-        $validated = $request->validate([
-            'dateAction' => 'integer|required',
-            'titre' => 'string|required',
-            'adresseAction'=>'string'|'required',
-            'content'=>'text'|'required',
-            'image'=>'string'|'required'
-        ]);
+    //Validation des champs/attributs
+        $attributs=$request->validate(
+            ["titre"=>"required|min:2|max:100|string",
+                "dateAction"=>"date|required",
+                "contenue"=>"required|string",
+                "image"=>"required|image"]);
 
-            $actions = new Actions();
-            $actions->dateAction = $request->dateAction;
-            $actions->titre = $request->titre;
-            $actions->adresseAction =$request->adresseAction;
-            $actions->content =$request->content;
-            $actions->image = $request->image;
+             //Enregistre sur le serveur le drapeau
+        $cheminImage=$request->file("#")->store("actions");
 
-            $actions->save();
-         return redirect('Action')->with('message', 'Action ajouter');
+             //Remplace le chemin de l'image dans les attributs
+        $attributs["#"]=$cheminImage;
+
+            //Enregistrement de l'action dans la table
+        Actions::create($attributs);
+
+            //redirection vers le dashboard
+        return redirect("Action.createAction");
     }
 
     /**
@@ -82,17 +84,21 @@ class ActionsController extends Controller
     {
         $actions = Actions::findOrFail($id);
 
-        return view('editAction', compact('action'));
+        //Afficher un formulaire modification pré-rempli
+
+        return view('Actions.editAction', ["UneAction"=>$actions]);
     }
+
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  App\Http\Requests\ActionRequest  $request
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @param  \App\Models\Actions  $actions
      * @return \Illuminate\Http\Response
      */
-    public function update(ActionRequest $request, Actions $actions)
+    public function update(Request $request, Actions $actions)
     {
 
        $actions = Actions::findOrFail($id);
@@ -104,6 +110,16 @@ class ActionsController extends Controller
        $actions->save();
         return redirect('Action')->with('message', 'Action à jour');
     }
+
+    $pays=Pays::find($request->id);
+
+    $attributs = $request->validate(
+      [
+          "nom" => "required|min:2|max:100|string",
+          "population" => "numeric|required|min:0",
+          "region" => "required|string|min:4",
+          "drapeau"=>"image"
+      ]
 
     /**
      * Remove the specified resource from storage.

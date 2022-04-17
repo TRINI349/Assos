@@ -1,28 +1,31 @@
 @extends("base")
 @section("titre")
-Ajout D'un Rapport d'activite
+Modification D'un Rapport d'activite
 @endsection
 
 @section("contenu")
 <div class="container my-2">
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
-        <h1>Fomulaire d'ajout d'un rapport d'activite</h1>
-        <form action="/RapportsDesActivites" method="post" enctype="multipart/form-data">
+        <h1>Fomulaire de modification d'un rapport d'activite</h1>
+        <form action="/RapportsDesActivites/{{$lePays->id}}" method="post" enctype="multipart/form-data">
             @csrf
+            @method("put")
+
+            <input type="hidden" name="id" value="{{$lePays->id}}">
             <div class="row mb-2">
                 <label for="annee">ANNEE</label>
                 <input name="annee" minlength="2" maxlength="100" required type="text" class="form-control" id="annee"
-                    placeholder="l'année du rapport">
+                    placeholder="l'année du rapport de l'activite" value="{{$lePays->annee}}">
                 @error("annee")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>
 
             <div class="row mb-2">
-                <label for="lien Fichier">LIEN FICHIER</label>
-                <input name="lien Fichier" min="0" required type="number" class="form-control" id="lien Fichier"
-                    placeholder="indiquer le lien du fichier">
-                @error("lien Fichier")
+                <label for="lien fichier">LIEN FICHIER</label>
+                <input name="lien fichier" min="0" required type="number" class="form-control" id="lien fichier"
+                    placeholder="indique le lien du fichier" value="{{$lePays->lienFichier}}">
+                @error("lien fichier")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>

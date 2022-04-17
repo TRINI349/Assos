@@ -1,24 +1,26 @@
 @extends("base")
 
 @section("titre")
-Gestion des villes
+Gestion des rapports des  activites
 @endsection
 
 @section("contenu")
-<h1 class="my-2">Les villes</h1>
-<a class="btn btn-primary mb-2" href="Villes/create">Ajouter une nouvelle ville</a>
+<h1 class="my-2">Les rapports des activites</h1>
+<a class="btn btn-primary mb-2" href="Activite/create">Ajouter un nouveau rapport d'activite</a>
  <table class="table">
      <thead>
          <tr>
             <th>Id</td>
-            <th>NOM</td>
+            <th>ANNEE</td>
+            <th>LIEN FICHIER</td>
          </tr>
      </thead>
      <tbody>
-         @foreach ($villes as $uneVille )
+         @foreach ($rapports as $unRapport )
             <tr>
-                <td>{{$uneVille->id}}</td>
-                <td>{{$uneVille->nom}}</td>
+                <td>{{$unRapport->id}}</td>
+                <td>{{$unRapport->type}}</td>
+                <td>{{$unRapport->nom}}</td>
                 <td class="col-4 col-lg-3">
                     <div class="row">
                     <a class="btn btn-primary col mx-2" href="">Modifier</a>

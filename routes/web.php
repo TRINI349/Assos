@@ -30,8 +30,9 @@ Route::resource('Activite',ActivitesController::class);
 Route::resource('Actions',ActionsController::class);
 //Route::get('Actions',[ActionsConctroller::class,'index'])->name
 
-//Route::get("Action/creatAction",[ActionController::class,"create"]);
-Route::resource('creatAction', ActionController::class);
+Route::get("Action.createAction",[ActionsController::class,"create"]);
+Route::get("Action.editAction",[ActionsController::class,"edit"]);
+Route::get("Action.showAction",[ActionsController::class,])
 
 
 
