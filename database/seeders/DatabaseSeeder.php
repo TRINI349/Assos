@@ -11,6 +11,7 @@ use App\Models\Activites;
 use Illuminate\Database\Seeder;
 use App\Models\RapportDesActivites;
 use App\Models\RapportsDesActivites;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class DatabaseSeeder extends Seeder
@@ -32,11 +33,11 @@ class DatabaseSeeder extends Seeder
 
 
 
-            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'villiers sur marne','idVille'=>'1']);
-            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'plessis trevise','idVille'=>'3']);
-            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'la queue en brie','idVille'=>'2']);
-            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'bry sur marne','idVille'=>'4']);
-            $activite=Activites::create(['type'=>'auto-ecole','nom'=>'villiers sur marne','idVille'=>'1']);
+            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'villiers sur marne','idVilles'=>'1']);
+            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'plessis trevise','idVilles'=>'3']);
+            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'la queue en brie','idVilles'=>'2']);
+            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'bry sur marne','idVilles'=>'4']);
+            $activite=Activites::create(['type'=>'auto-ecole','nom'=>'villiers sur marne','idVilles'=>'1']);
 
             Actions::create([
                 'dateAction'=>'2022-05-31',
@@ -44,15 +45,19 @@ class DatabaseSeeder extends Seeder
                 'contenu'=>'MonContenu',
                 'image'=>'monImage',
                 'adresseAction'=>'11 rue feederic passy',
-                'idActivite'=>'2'   ]);
+                'idActivites'=>'2'   ]);
 
-            RapportsDesActivites::create(['annee'=>'2019','lienFichier'=>'lien','idActivite'=>'2']);
-            RapportsDesActivites::create(['annee'=>'2020','lienFichier'=>'lien','idActivite'=>'2']);
-            RapportsDesActivites::create(['annee'=>'2021','lienFichier'=>'lien','idActivite'=>'2']);
+            RapportsDesActivites::create(['annee'=>'2019','lien'=>'lien1','idActivites'=>'2']);
+            RapportsDesActivites::create(['annee'=>'2020','lien'=>'lien2','idActivites'=>'2']);
+            RapportsDesActivites::create(['annee'=>'2021','lien'=>'lien3','idActivites'=>'2']);
 
-            Role::create(['nom'=>'superAdmin']);
-            Role::create(['nom'=>'admin']);
 
+
+
+           $super= Role::create(['nom'=>'superAdmin']);
+           $admin= Role::create(['nom'=>'admin']);
+
+            User::create(['nom'=>'monNom','prenom'=>'monPrenom','email'=>'secretariat@emmaus-synergie.fr','password'=>bcrypt('emmaussynergie'),'idRoles'=>$admin->id]);
 
 
 

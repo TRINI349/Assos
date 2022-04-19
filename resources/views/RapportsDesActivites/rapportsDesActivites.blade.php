@@ -16,11 +16,11 @@ Gestion des rapports des  activites
          </tr>
      </thead>
      <tbody>
-         @foreach ($rapports as $unRapport )
+         @foreach ($rapportsDesActivites as $unRapportsDesActivites )
             <tr>
-                <td>{{$unRapport->id}}</td>
-                <td>{{$unRapport->type}}</td>
-                <td>{{$unRapport->nom}}</td>
+                <td>{{$unRapportsDesActivites->id}}</td>
+                <td>{{$unRapportsDesActivites->type}}</td>
+                <td>{{$unRapportsDesActivites->nom}}</td>
                 <td class="col-4 col-lg-3">
                     <div class="row">
                     <a class="btn btn-primary col mx-2" href="">Modifier</a>

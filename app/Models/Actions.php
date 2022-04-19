@@ -11,5 +11,9 @@ class Actions extends Model
 
     protected $fillable=['dateAction','titre','adresseAction','content','image'];
 
+    public function Activites(){
+        return $this->belongsTo(Activites::class);
+    }
+
 }
 

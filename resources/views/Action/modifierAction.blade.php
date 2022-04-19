@@ -7,15 +7,15 @@ Modification D'une Action
 <div class="container my-2">
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
         <h1>Fomulaire de modification d'une Action</h1>
-        <form action="/Actions/{{$lePays->id}}" method="post" enctype="multipart/form-data">
+        <form action="/Actions/{{$uneAction->id}}" method="post" enctype="multipart/form-data">
             @csrf
             @method("put")
 
-            <input type="hidden" name="id" value="{{$lePays->id}}">
+            <input type="hidden" name="id" value="{{$uneAction->id}}">
             <div class="row mb-2">
                 <label for="titre">TITRE</label>
                 <input name="titre" minlength="2" maxlength="100" required type="text" class="form-control" id="titre"
-                    placeholder="le titre de l'action" value="{{$lePays->titre}}">
+                    placeholder="le titre de l'action" value="{{$uneAction->titre}}">
                 @error("titre")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
@@ -24,7 +24,7 @@ Modification D'une Action
             <div class="row mb-2">
                 <label for="dateAction">DATE ACTION</label>
                 <input name="dateAction" min="0" required type="number" class="form-control" id="dateAction"
-                    placeholder="indique la date de l'action" value="{{$lePays->dateAction}}">
+                    placeholder="indique la date de l'action" value="{{$uneAction->dateAction}}">
                 @error("dateAction")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
@@ -33,7 +33,7 @@ Modification D'une Action
             <div class="row mb-2">
                 <label for="adresseAction">ADRESSE ACTION</label>
                 <input name="adresseAction" minlength="4" required type="" class="form-control" id="adresseAction"
-                    placeholder="indiquer l'adresse de l'action" value="{{$lePays->adresseAction}}">
+                    placeholder="indiquer l'adresse de l'action" value="{{$uneAction->adresseAction}}">
                 @error("adresseAction")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
@@ -42,7 +42,7 @@ Modification D'une Action
             <div class="row mb-2">
                 <label for="contenue">CONTENUE</label>
                 <input name="contenue" minlength="4" required type="" class="form-control" id="contenue"
-                    placeholder="indiquer le contenue de l'action" value="{{$lePays->contenue}}">
+                    placeholder="indiquer le contenue de l'action" value="{{$uneAction->contenue}}">
                 @error("contenue")
                 <div class="text-danger">{{$message}}</div>
                 @enderror

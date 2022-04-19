@@ -17,7 +17,7 @@ class ActionsController extends Controller
     public function index()
     {
         $actions=Actions::all();
-        return view('Action'.'Action',["actions"=>$actions]);
+        return view('Action.Action',["actions"=>$actions]);
     }
 
 
@@ -80,9 +80,9 @@ class ActionsController extends Controller
      * @param  \App\Models\Actions  $actions
      * @return \Illuminate\Http\Response
      */
-    public function edit(Actions $actions)
+    public function edit(Actions $actions,$id)
     {
-        $actions = Actions::findOrFail($id);
+        $actions = Actions::find($id);
 
         //Afficher un formulaire modification pré-rempli
 
@@ -114,6 +114,8 @@ class ActionsController extends Controller
         ]
     );
 
+
+
     if($request->monImage){
 
         //Enregistre sur le serveur le drapeau
@@ -122,7 +124,7 @@ class ActionsController extends Controller
         $attributs["monImage"]=$cheminImage;
         }
         //Mettre a jour le pays avec de nouveau attributs
-        $pays->update($attributs);
+        $actions->update($attributs);
         //Le message flash
         session()->flash("success","$actions->titre a bien était modifier ! ");
         return redirect("/Actions");

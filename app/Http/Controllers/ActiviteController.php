@@ -58,7 +58,7 @@ class ActiviteControllerController extends Controller
      * @param  \App\Models\ActiviteController  $activiteController
      * @return \Illuminate\Http\Response
      */
-    public function show(ActiviteController $activiteController)
+    public function show(Activites $activite)
     {
        //
     }

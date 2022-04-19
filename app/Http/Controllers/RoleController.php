@@ -15,7 +15,7 @@ class RoleController extends Controller
     public function index()
     {
         $role=Role::all();
-        return view('Role'.'Role',["role"=>$role]);
+        return view('Role'.'Role',["roles"=>$role]);
     }
 
     /**

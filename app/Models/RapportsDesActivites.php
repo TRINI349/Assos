@@ -9,4 +9,8 @@ class RapportsDesActivites extends Model
 {
     use HasFactory;
     protected $fillable=['Annee','lienFichier'];
+
+    public function Activites(){
+        return $this->belongsto(Activites::class);
+    }
 }

@@ -16,7 +16,7 @@ class VillesController extends Controller
     {
 
         $villes=Villes::all();
-        return view('Villes',compact('villes'));
+        return view('Villes',['villes'=>$villes]);
     }
 
     /**
@@ -49,16 +49,7 @@ class VillesController extends Controller
 
     public function show(Villes $villes)
     {
-        $validated = $request->validate([
-            'nom' => 'string|required',
-
-        ]);
-
-            $villes = new Villes();
-            $villes->name = $request->name;
-
-            $villes->save();
-        return redirect('Ville')->with('message', 'Ville ajouter');
+        //
     }
 
 
@@ -69,11 +60,11 @@ class VillesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit(Villes $villes)
+    public function edit(Villes $villes,$id)
     {
-        $villes = Villes::findOrFail($id);
+        $villes = Villes::find($id);
 
-        return view('editVilles', compact('villes'));
+        return view('editVilles', ["uneVille",$villes]);
     }
 
     /**
@@ -83,13 +74,13 @@ class VillesController extends Controller
      * @param  \App\Models\Villes  $villes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Villes $villes)
+    public function update(Request $request, Villes $villes,$id)
     {
 
-        $villes = Villes::findOrFail($id);
-        $villes->nom = $request->nom;
+        $attribut = Villes::find($request->id);
 
-        $villes->save();
+
+        $attribut->save();
         return redirect()->action(
             [Villes::class, 'index']
         )->with('message', 'Ville à jour');
@@ -101,9 +92,9 @@ class VillesController extends Controller
      * @param  \App\Models\Villes  $villes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Villes $villes)
+    public function destroy(Villes $villes,$id)
     {
-        $villes = Villes::findOrFail($id);
+        $villes = Villes::find($id);
         $villes->delete();
         return redirect('showVilles')->with('message', 'Ville supprimer');
     }

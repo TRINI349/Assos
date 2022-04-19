@@ -9,4 +9,9 @@ class Villes extends Model
 {
     use HasFactory;
     protected $fillable=['nom'];
+
+    public function Activites(){
+        return $this->hasMany(Activites::class);
+    }
 }
+

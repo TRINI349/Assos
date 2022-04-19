@@ -16,7 +16,7 @@ class RapportsDesActivitesController extends Controller
     public function index()
     {
         $rapportsDesActivites=RapportsDesActivites::all();
-        return view('RapportsDesActivites',['rapportsDesActivites'=>$rapportsDesActivites]);
+        return view('RapportsDesActivites'.'rapportsDesActivites',['RapportsDesActivites'=>$rapportsDesActivites]);
     }
 
     /**
@@ -68,11 +68,12 @@ class RapportsDesActivitesController extends Controller
      * @param  \App\Models\RapportsDesActivites  $rapportsDesActivites
      * @return \Illuminate\Http\Response
      */
-    public function edit(RapportsDesActivites $rapportsDesActivites)
+    public function edit(RapportsDesActivites $rapportsDesActivites,$id)
     {
-        $rapportsDesActivites = RapportsDesActivites::findOrFail($id);
+        $rapportsDesActivites = RapportsDesActivites::findOfFail($id);
 
-        return view('editRapportsDesActivites', compact('rapportsDesActivites'));
+
+        return view('RapportsDesActivites.modifierRapport',['unRapportsDesActivites'=>$rapportsDesActivites]);
     }
 
     /**
@@ -84,15 +85,21 @@ class RapportsDesActivitesController extends Controller
      */
     public function update(Request $request, RapportsDesActivites $rapportsDesActivites)
     {
-        $rapportsDesActivites = RapportsDesActivites::findOrFail($id);
-        $rapportsDesActivites->fichier = $request->fichier;
-        $rapportsDesActivites->lien = $request->lien;
-        $rapportsDesActivites->save();
-        return redirect()->action(
-            [RapportsDesActivitesController::class, 'index']
-        )->with('message', 'Rapport à jour');
 
-    }
+    $rapportsDesActivites=RapportsDesActivites::find($request->id);
+
+    $attributs = $request->validate(
+
+    [
+        'fichier'=>'required|min:2|max:100|string',
+        'lien'=>'string'
+    ]);
+
+    $rapportsDesActivites->update($attributs);
+    //Le message flash
+    session()->flash("success","$rapportsDesActivites->fichier a bien était modifier ! ");
+    return redirect('/modifierRapport');
+}
 
     /**
      * Remove the specified resource from storage.
@@ -100,10 +107,10 @@ class RapportsDesActivitesController extends Controller
      * @param  \App\Models\RapportsDesActivites  $rapportsDesActivites
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RapportsDesActivites $rapportsDesActivites)
+    public function destroy(RapportsDesActivites $rapportsDesActivites,$id)
     {
         $rapportsDesActivites = RapportsDesActivites::findOrFail($id);
         $rapportsDesActivites->delete();
-        return redirect('showRapport')->with('message', 'Rapport supprimer');
+        return redirect('RapportsDesActivites.rapportsDesActivites')->with('message', 'Rapport supprimer');
     }
 }
