@@ -59,6 +59,11 @@ class DatabaseSeeder extends Seeder
 
             User::create(['nom'=>'monNom','prenom'=>'monPrenom','email'=>'secretariat@emmaus-synergie.fr','password'=>bcrypt('emmaussynergie'),'idRoles'=>$admin->id]);
 
+            User::create(['nom'=>'monNom','prenom'=>'monPrenom','email'=>'cdesamblanc@emmaus-synergie.fr','password'=>bcrypt('emmaussynergie'),'idRoles'=>$super->id]);
+
+
+
+
 
 
     }

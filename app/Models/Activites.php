@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Activites extends Model
 {
@@ -21,4 +22,12 @@ class Activites extends Model
     public function RapportsDesactivites(){
         return $this->hasMany(RapportsDesActivites::class);
     }
+
+    public function Users()
+
+    {
+    return  $this->belongsToMany(User::class);
+
+    }
+
 }
