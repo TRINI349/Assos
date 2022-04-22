@@ -8,6 +8,7 @@ use App\Models\Villes;
 use App\Models\Actions;
 
 use App\Models\Activites;
+use App\Models\Partenaires;
 use Illuminate\Database\Seeder;
 use App\Models\RapportDesActivites;
 use App\Models\RapportsDesActivites;
@@ -61,8 +62,9 @@ class DatabaseSeeder extends Seeder
 
             User::create(['nom'=>'monNom','prenom'=>'monPrenom','email'=>'cdesamblanc@emmaus-synergie.fr','password'=>bcrypt('emmaussynergie'),'idRoles'=>$super->id]);
 
-
-
+            Partenaires::create(['nom'=>'CAF',
+                                'nom'=>'PARIS EST MARNE ET BOIS',
+                                'nom'=>'Code Rousseau']);
 
 
 

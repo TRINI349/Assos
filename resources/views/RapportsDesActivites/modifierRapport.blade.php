@@ -11,7 +11,7 @@ Modification D'un Rapport d'activite
             @csrf
             @method("put")
 
-            <input type="hidden" name="id" value="{{$unRapportsDesActivitest->id}}">
+            <input type="hidden" name="id" value="{{$unRapportsDesActivites->id}}">
             <div class="row mb-2">
                 <label for="annee">ANNEE</label>
                 <input name="annee" minlength="2" maxlength="100" required type="text" class="form-control" id="annee"

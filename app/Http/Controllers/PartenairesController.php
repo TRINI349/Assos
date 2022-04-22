@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activites;
+use App\Models\Partenaires;
 use Illuminate\Http\Request;
 
-class ActivitesController extends Controller
+class PartenairesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class ActivitesController extends Controller
      */
     public function index()
     {
-        $activites=Activites::all();
-        return view('activite',["activites"=>$activites]);
+        $partenaires=Partenaires::all();
+        return view('partenaire'.'partenaires',['partenaires'=>$partenaires]);
     }
 
     /**
@@ -25,7 +25,7 @@ class ActivitesController extends Controller
      */
     public function create()
     {
-        return view('activite.creatActivite');
+        return view ('partenaire.createPartenaires');
     }
 
     /**
@@ -39,87 +39,77 @@ class ActivitesController extends Controller
 
         //Validation des champs/attributs
         $attributs=$request->validate(
-            ["type"=>"required|min:2|max:100|string",
-                "nom"=>"string|required"
-            ]);
+            ["nom"=>"required|string"]);
 
             //Enregistrement de l'action dans la table
-        Activites::create($attributs);
+        Partenaires::create($attributs);
 
             //redirection vers le dashboard
-        return redirect("activite.creatActivite");
+        return redirect("partenaire.createPartenaires");
     }
+
 
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\ActiviteController  $activiteController
+     * @param  \App\Models\Partenaires  $partenaires
      * @return \Illuminate\Http\Response
      */
-    public function show(Activites $activite)
+
+    public function show(Partenaires $partenaires)
     {
-       //
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\ActiviteController  $activiteController
+     * @param  \App\Models\Partenaires  $partenaires
      * @return \Illuminate\Http\Response
      */
-
-    public function edit($id)
+    public function edit(Partenaires $partenaires, $id)
     {
-        $activites=Activites::find($id);
+        $partenaires=Partenaires::find($id);
 
-        return view('activite.modifierActivite', ["uneActivite"=>$activites]);
+        return view('partenaire.modifierPartenaire', ["unPartenaire"=>$partenaires]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\ActiviteController  $activiteController
+     * @param  \App\Models\Partenaires  $partenaires
      * @return \Illuminate\Http\Response
      */
-
-    public function update(Request $request, $id)
+    public function update(Request $request, Partenaires $partenaires, $id)
     {
-
-
-
-        $activites=Activites::find($request->$id);
+        $partenaires=Partenaires::find($request->$id);
 
         $attributs = $request->validate(
 
         [
-            "type"=>"required|min:2|max:100|string",
+
             "nom"=>"string|required"
         ]);
 
-        $activites->update($attributs);
+        $partenaires->update($attributs);
         //Le message flash
-        session()->flash("success","$activites->type a bien était modifier ! ");
-        return redirect("/activite");
+        session()->flash("success","$partenaires->nom a bien était modifier ! ");
+        return redirect("/partenaire");
     }
-
-
-
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ActivitesController  $activiteController
+     * @param  \App\Models\Partenaires  $partenaires
      * @return \Illuminate\Http\Response
      */
-
-
     public function destroy($id)
     {
-        $activites = Activites::findOrFail($id);
-        $activites->delete();
-        return redirect('activite')
-        ->with('message', 'Activite supprimer');
+        $partenaires = Partenaires::findOrFail($id);
+        $partenaires->delete();
+        return redirect('partenaire')
+        ->with('message', 'Partenaire supprimer');
     }
 }
