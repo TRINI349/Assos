@@ -14,9 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::create('activite__user', function (Blueprint $table) {
-            $table->id();
+
             $table->foreignId('Activite_id')->constrained()->onDelete('cascade');  //pour eviter les injections phantome
             $table->foreignId('User_id')->constrained()->onDelete('cascade');
+            $table->primary(['Activite_id', 'User_id']);
             $table->timestamps();
         });
     }

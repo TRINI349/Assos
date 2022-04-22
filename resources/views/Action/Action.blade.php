@@ -23,7 +23,7 @@ Gestion des actions
             <tr>
                 <td>{{$uneAction->id}}</td>
                 <td>{{$uneAction->titre}}</td>
-                <td>{{$uneACtion->dateAction}}</td>
+                <td>{{$uneAction->dateAction}}</td>
                 <td>{{$uneAction->adresseAction}}</td>
                 <td>{{$uneAction->contenue}}</td>
                 <td>{{$uneAction->image}}</td>
