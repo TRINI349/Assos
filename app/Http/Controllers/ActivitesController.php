@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ActiviteController;
 use App\Models\Activites;
 use Illuminate\Http\Request;
 
-class ActiviteControllerController extends Controller
+class ActivitesController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +15,7 @@ class ActiviteControllerController extends Controller
     public function index()
     {
         $activites=Activites::all();
-        return view('Activite.Activite',["activites"=>$activites]);
+        return view('activite',["activites"=>$activites]);
     }
 
     /**
@@ -26,7 +25,7 @@ class ActiviteControllerController extends Controller
      */
     public function create()
     {
-        return view('Activite.creatActivite');
+        return view('activite.creatActivite');
     }
 
     /**
@@ -48,7 +47,7 @@ class ActiviteControllerController extends Controller
         Activites::create($attributs);
 
             //redirection vers le dashboard
-        return redirect("Activite.creatActivite");
+        return redirect("activite.creatActivite");
     }
 
 
@@ -74,7 +73,7 @@ class ActiviteControllerController extends Controller
     {
         $activites=Activites::find($id);
 
-        return view('Activite.modifierActivite', ["uneActivite"=>$activites]);
+        return view('activite.modifierActivite', ["uneActivite"=>$activites]);
     }
 
     /**
@@ -102,7 +101,7 @@ class ActiviteControllerController extends Controller
         $activites->update($attributs);
         //Le message flash
         session()->flash("success","$activites->type a bien était modifier ! ");
-        return redirect("/Activite");
+        return redirect("/activite");
     }
 
 
@@ -111,7 +110,7 @@ class ActiviteControllerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\ActiviteController  $activiteController
+     * @param  \App\Models\ActivitesController  $activiteController
      * @return \Illuminate\Http\Response
      */
 
@@ -120,7 +119,7 @@ class ActiviteControllerController extends Controller
     {
         $activites = Activites::findOrFail($id);
         $activites->delete();
-        return redirect('Activite')
+        return redirect('activite')
         ->with('message', 'Activite supprimer');
     }
 }

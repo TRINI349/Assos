@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ActionsController;
+use App\Http\Controllers\ActivitesController;
 use App\Http\Controllers\RoleController;
 
 /*
@@ -27,7 +28,7 @@ require __DIR__.'/auth.php';
 
 
 Route::resource('Action',ActionsController::class);
-Route::resource('Activite',ActiviteController::class);
+Route::resource('activite',ActivitesController::class);
 Route::resource('RapportsDesActivites',RapportsDesActivitesController::class);
 Route::resource('ville',VillesController::class);
 Route::resource('Role',RoleController::class);
