@@ -31,6 +31,7 @@ Ajout D'une Action
                 <label for="adresseAction">ADRESSE ACTION</label>
                 <input name="adresseAction" minlength="4" required type="" class="form-control" id="adresseAction"
                     placeholder="indiquer l'adresse de l'action">
+                    <!--Pour afficher les messages d'erreurs pour les differents chanps on peut utiliser la directive error-->
                 @error("adresseAction")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
@@ -40,6 +41,7 @@ Ajout D'une Action
                 <label for="contenue">CONTENUE</label>
                 <input name="contenue" minlength="4" required type="" class="form-control" id="contenue"
                     placeholder="indiquer le contenue de l'action">
+                    <!--Pour afficher les messages d'erreurs pour les differents chanps on peut utiliser la directive error-->
                 @error("contenue")
                 <div class="text-danger">{{$message}}</div>
                 @enderror

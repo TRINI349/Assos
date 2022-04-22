@@ -37,7 +37,7 @@ Route::resource('ville',VillesController::class);
 Route::resource('Role',RoleController::class);
 Route::resource('partenaire',PartenairesController::class);
 
-Route::get('/admin',[AdminController::class])->middleware(('OnlyAdmin'))->name('OnlyAdmin');
+Route::get('/admin',[AdminController::class])->middleware(['OnlyAdmin'])->name('OnlyAdmin');
 
 
 // Route::get('Action',[ActionsController::class,'index']);

@@ -43,7 +43,7 @@ Modification D'une Action
                 <label for="contenue">CONTENUE</label>
                 <input name="contenue" minlength="4" required type="" class="form-control" id="contenue"
                     placeholder="indiquer le contenue de l'action" value="{{$uneAction->contenue}}">
-                @error("contenue")
+                @error("contenue")<!--Pour afficher les messages d'erreurs pour les differents chanps on peut utiliser la directive error-->
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>
