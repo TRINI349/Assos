@@ -15,7 +15,7 @@ class ActivitesController extends Controller
     public function index()
     {
         $activites=Activites::all();
-        return view('activite',["activites"=>$activites]);
+        return view('activite.activite',["activites"=>$activites]);
     }
 
     /**

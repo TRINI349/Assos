@@ -7,7 +7,7 @@ Modification D'une Action
 <div class="container my-2">
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
         <h1>Fomulaire de modification d'une Action</h1>
-        <form action="/Actions/{{$uneAction->id}}" method="post" enctype="multipart/form-data">
+        <form action="/Action/{{$uneAction->id}}" method="post" enctype="multipart/form-data">
             @csrf
             @method("put")
 

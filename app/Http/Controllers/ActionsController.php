@@ -30,7 +30,7 @@ class ActionsController extends Controller
     public function create()
     {
 
-        return view('Action');
+        return view('Action.createAction');
     }
 
     /**
