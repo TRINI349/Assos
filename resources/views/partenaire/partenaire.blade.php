@@ -6,7 +6,7 @@ Gestion des partenaires
 
 @section("contenu")
 <h1 class="my-2">Les partenaires</h1>
-<a class="btn btn-primary mb-2" href="Activite/create">Ajouter un nouveau partenaire</a>
+<a class="btn btn-primary mb-2" href="partenaire/createPartenaire">Ajouter un nouveau partenaire</a>
  <table class="table">
      <thead>
          <tr>

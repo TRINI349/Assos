@@ -6,7 +6,7 @@ Gestion des villes
 
 @section("contenu")
 <h1 class="my-2">Les villes</h1>
-<a class="btn btn-primary mb-2" href="Villes/create">Ajouter une nouvelle ville</a>
+<a class="btn btn-primary mb-2" href="ville/createVille">Ajouter une nouvelle ville</a>
  <table class="table">
      <thead>
          <tr>

@@ -1,4 +1,4 @@
-@extends("base")
+@extends("layouts.base")
 @section("titre")
 Ajout D'une Ville
 @endsection
@@ -7,7 +7,7 @@ Ajout D'une Ville
 <div class="container my-2">
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
         <h1>Fomulaire d'ajout d'une Ville</h1>
-        <form action="/Villes" method="post" enctype="multipart/form-data">
+        <form action="/ville" method="post" enctype="multipart/form-data">
             @csrf
             <div class="row mb-2">
                 <label for="nom">NOM</label>

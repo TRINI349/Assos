@@ -30,9 +30,9 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 
-Route::resource('Action',ActionsController::class);
+Route::resource('action',ActionsController::class);
 Route::resource('activite',ActivitesController::class);
-Route::resource('RapportsDesActivites',RapportsDesActivitesController::class);
+Route::resource('rapportsDesActivites',RapportsDesActivitesController::class);
 Route::resource('ville',VillesController::class);
 Route::resource('Role',RoleController::class);
 Route::resource('partenaire',PartenairesController::class);
@@ -40,18 +40,18 @@ Route::resource('partenaire',PartenairesController::class);
 Route::get('/admin',[AdminController::class,'dashboard'])->middleware(['eAdmin'])->name('eAdmin'); // le nom de la route peut etre nomme differament
 
 
-// Route::get('Action',[ActionsController::class,'index']);
-// Route::get('Action'.'createAction',[ActionsController::class,'create']);
-// Route::post('Action'.'modifierAction{$id}',[ActionsController::class,'edit']);
-// Route::put('Action'.'modifierAction',[ActionsController::class,'update']);
-// Route::delete('Action'.'Action{$id}',[ActionsController::class,'destroy']);
+// Route::get('action.action',[ActionsController::class,'index']);
+// Route::get('action.createAction',[ActionsController::class,'create']);
+// Route::post('action.modifierAction{$id}',[ActionsController::class,'edit']);
+// Route::put('action.modifierAction',[ActionsController::class,'update']);
+// Route::delete('action.action{$id}',[ActionsController::class,'destroy']);
 
 
-// Route::get('Activite'.'Activite',[ActiviteController::class,'index']);
-// Route::get('Activite'.'createActivite',[ActiviteController::class,'create']);
-// Route::post('Activite'.'modifierActivite{$id}',[ActiviteController::class,'edit']);
-// Route::put('Activite'.'modifierActivite',[ActiviteController::class,'update']);
-// Route::delete('Activite'.'Activite{$id}',[ActiviteController::class,'destroy']);
+// Route::get('activite.activite',[ActiviteController::class,'index']);
+// Route::get('activite.createActivite',[ActiviteController::class,'create']);
+// Route::post('activite.modifierActivite{$id}',[ActiviteController::class,'edit']);
+// Route::put('activite.modifierActivite',[ActiviteController::class,'update']);
+// Route::delete('activite.activite{$id}',[ActiviteController::class,'destroy']);
 
 
 // Route::get('RapportsDesActivites'.'rapportsDesActivites',[RapportsDesActivitesController::class,'index']);

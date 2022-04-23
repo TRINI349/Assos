@@ -16,7 +16,7 @@ class RapportsDesActivitesController extends Controller
     public function index()
     {
         $rapportsDesActivites=RapportsDesActivites::all();
-        return view('RapportsDesActivites'.'rapportsDesActivites',['RapportsDesActivites'=>$rapportsDesActivites]);
+        return view('rapportsDesActivites.rapportsDesActivites',['RapportsDesActivites'=>$rapportsDesActivites]);
     }
 
     /**
@@ -26,7 +26,7 @@ class RapportsDesActivitesController extends Controller
      */
     public function create()
     {
-        return view('RapportsDesActivites.creatRapport
+        return view('rapportsDesActivites.createRapport
         ');
     }
 
@@ -48,7 +48,7 @@ class RapportsDesActivitesController extends Controller
             $rapportsDesActivites->type = $request->type;
 
             $rapportsDesActivites->save();
-        return redirect('Rapport')->with('message', 'Rapport ajouter');
+        return redirect('rapportsDesActivites')->with('message', 'Rapport ajouter');
     }
 
     /**
@@ -73,7 +73,7 @@ class RapportsDesActivitesController extends Controller
         $rapportsDesActivites = RapportsDesActivites::findOfFail($id);
 
 
-        return view('RapportsDesActivites.modifierRapport',['unRapportsDesActivites'=>$rapportsDesActivites]);
+        return view('rapportsDesActivites.modifierRapport',['unRapportsDesActivites'=>$rapportsDesActivites]);
     }
 
     /**
@@ -111,6 +111,6 @@ class RapportsDesActivitesController extends Controller
     {
         $rapportsDesActivites = RapportsDesActivites::findOrFail($id);
         $rapportsDesActivites->delete();
-        return redirect('RapportsDesActivites.rapportsDesActivites')->with('message', 'Rapport supprimer');
+        return redirect('rapportsDesActivites.rapportsDesActivites')->with('message', 'Rapport supprimer');
     }
 }

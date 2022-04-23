@@ -6,7 +6,7 @@ Gestion des roles
 
 @section("contenu")
 <h1 class="my-2">Les differents roles</h1>
-<a class="btn btn-primary mb-2" href="Activite/create">Ajouter un nouveau role</a>
+<a class="btn btn-primary mb-2" href="Role/createRole">Ajouter un nouveau role</a>
  <table class="table">
      <thead>
          <tr>

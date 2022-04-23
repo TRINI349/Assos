@@ -15,7 +15,7 @@ class PartenairesController extends Controller
     public function index()
     {
         $partenaires=Partenaires::all();
-        return view('partenaire'.'partenaires',['partenaires'=>$partenaires]);
+        return view('partenaire.partenaire',['partenaires'=>$partenaires]);
     }
 
     /**

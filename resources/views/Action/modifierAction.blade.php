@@ -1,4 +1,4 @@
-@extends("base")
+@extends("layouts.base")
 @section("titre")
 Modification D'une Action
 @endsection
@@ -7,7 +7,7 @@ Modification D'une Action
 <div class="container my-2">
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
         <h1>Fomulaire de modification d'une Action</h1>
-        <form action="/Action/{{$uneAction->id}}" method="post" enctype="multipart/form-data">
+        <form action="/action/{{$uneAction->id}}" method="post" enctype="multipart/form-data">
             @csrf
             @method("put")
 
@@ -50,7 +50,7 @@ Modification D'une Action
 
             <div class="row mb-2">
                 <label for="image">Image</label>
-                <input name="drapeau" type="file" accept="image" class="form-control" id="image" placeholder="Rechercher une image">
+                <input name="drapeau" type="file" accept="image" class="form-control" id="image" placeholder="Rechercher une image" value="{{$uneAction->image}}">
                 @error("image")
                 <div class="text-danger">{{$message}}</div>
                 @enderror

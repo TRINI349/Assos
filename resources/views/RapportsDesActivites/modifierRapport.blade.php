@@ -1,4 +1,4 @@
-@extends("base")
+@extends("layouts.base")
 @section("titre")
 Modification D'un Rapport d'activite
 @endsection
@@ -7,7 +7,7 @@ Modification D'un Rapport d'activite
 <div class="container my-2">
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
         <h1>Fomulaire de modification d'un rapport d'activite</h1>
-        <form action="/RapportsDesActivites/{{$unRapportsDesActivites->id}}" method="post" enctype="multipart/form-data">
+        <form action="/rapportsDesActivites/{{$unRapportsDesActivites->id}}" method="post" enctype="multipart/form-data">
             @csrf
             @method("put")
 

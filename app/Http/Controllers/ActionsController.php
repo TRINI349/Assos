@@ -17,7 +17,7 @@ class ActionsController extends Controller
     public function index()
     {
         $actions=Actions::all();
-        return view('Action.Action',["actions"=>$actions]);
+        return view('action.action',["actions"=>$actions]);
     }
 
 
@@ -30,7 +30,7 @@ class ActionsController extends Controller
     public function create()
     {
 
-        return view('Action.createAction');
+        return view('action.createAction');
     }
 
     /**
@@ -60,7 +60,7 @@ class ActionsController extends Controller
         Actions::create($attributs);
 
             //redirection vers le dashboard
-        return redirect("Action.createAction");
+        return redirect('action.createAction');
     }
 
     /**
@@ -86,7 +86,7 @@ class ActionsController extends Controller
 
         //Afficher un formulaire modification pré-rempli
 
-        return view('Action.modifierAction', ["uneAction"=>$actions]);
+        return view('action.modifierAction', ["uneAction"=>$actions]);
     }
 
 
@@ -127,7 +127,7 @@ class ActionsController extends Controller
         $actions->update($attributs);
         //Le message flash
         session()->flash("success","$actions->titre a bien était modifier ! ");
-        return redirect("/Actions");
+        return redirect("/action");
         }
 
 
@@ -141,6 +141,6 @@ class ActionsController extends Controller
     {
         $actions =Actions::findOrFail($id);
         $actions->delete();
-        return redirect('Action')->with('message','Action supprimer');
+        return redirect('action')->with('message','Action supprimer');
     }
 }

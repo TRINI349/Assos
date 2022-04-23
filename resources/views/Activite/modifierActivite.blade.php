@@ -1,4 +1,4 @@
-@extends("base")
+@extends("layouts.base")
 @section("titre")
 Modification D'une Activite
 @endsection
@@ -7,11 +7,11 @@ Modification D'une Activite
 <div class="container my-2">
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
         <h1>Fomulaire de modification d'une Activite</h1>
-        <form action="/Activite/{{$uneActivite->id}}" method="post" enctype="multipart/form-data">
+        <form action="/activite/{{$uneActivite->id}}" method="post" enctype="multipart/form-data">
             @csrf
             @method("put")
 
-            <input type="hidden" name="id" value="{{$lactivite->id}}">
+            <input type="hidden" name="id" value="{{$uneActivite->id}}">
             <div class="row mb-2">
                 <label for="type">TYPE</label>
                 <input name="type" minlength="2" maxlength="100" required type="text" class="form-control" id="type"

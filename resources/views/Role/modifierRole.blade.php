@@ -1,4 +1,4 @@
-@extends("base")
+@extends("layouts.base")
 @section("titre")
 Modification Du Role
 @endsection
