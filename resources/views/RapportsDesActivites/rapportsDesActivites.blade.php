@@ -1,7 +1,7 @@
 @extends("layouts.base")
 
 @section("titre")
-Gestion des rapports des  activites
+Gestion des rapports d'activites
 @endsection
 
 @section("contenu")

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VillesController;
 use App\Http\Controllers\ActionsController;
 use App\Http\Controllers\ActivitesController;
+use App\Http\Controllers\PartenairesController;
 use App\Http\Controllers\RapportsDesActivitesController;
 
 /*

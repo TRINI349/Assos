@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RapportDesActivites;
 use App\Models\RapportsDesActivites;
 use Illuminate\Http\Request;
 
@@ -16,7 +15,7 @@ class RapportsDesActivitesController extends Controller
     public function index()
     {
         $rapportsDesActivites=RapportsDesActivites::all();
-        return view('rapportsDesActivites.rapportsDesActivites',['RapportsDesActivites'=>$rapportsDesActivites]);
+        return view('rapportsDesActivites.rapportsDesActivites',['rapportsDesActivites'=>$rapportsDesActivites]);
     }
 
     /**

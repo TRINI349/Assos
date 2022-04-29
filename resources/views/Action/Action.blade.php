@@ -6,7 +6,7 @@ Gestion des actions
 
 @section("contenu")
 <h1 class="my-2">Les actions</h1>
-<a class="btn btn-primary mb-2" href="action/createAction">Ajouter une nouvelle action</a>
+<a class="btn btn-primary mb-2" href="action/create">Ajouter une nouvelle action</a>
  <table class="table">
      <thead>
          <tr>

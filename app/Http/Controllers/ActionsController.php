@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Actions;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Action;
+
 
 class ActionsController extends Controller
 {
@@ -60,6 +60,7 @@ class ActionsController extends Controller
         Actions::create($attributs);
 
             //redirection vers le dashboard
+            session()->flash("success","L'action a bien été ajouter !");
         return redirect('action.createAction');
     }
 
@@ -80,7 +81,7 @@ class ActionsController extends Controller
      * @param  \App\Models\Actions  $actions
      * @return \Illuminate\Http\Response
      */
-    public function edit(Actions $actions,$id)
+    public function edit(Actions $actions, $id)
     {
         $actions = Actions::find($id);
 
