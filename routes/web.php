@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AdminController;
@@ -20,6 +21,10 @@ use App\Http\Controllers\RapportsDesActivitesController;
 |
 */
 
+
+Route::get('/contact',[Controller::class,"contactForm"]);
+Route::post('/contact',[Controller::class,"envoyerEmail"]);
+Route::get('refreshcaptcha',[Controller::class, 'refreshCaptcha'])->name('refreshcaptcha');
 Route::get('/', function () {
     return view('welcome');
 });
