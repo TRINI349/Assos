@@ -1,35 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{'action'}}</title>
+    <title>NOS ACTIONS</title>
 </head>
-<body>
-    <header>
-        <h1>NOS ACTIONS</h1>
-    </header>
-    <section>
-        <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-          <div class="card" style="width: 18rem;">
-            <img src="..." class="card-img-top" alt="...">
-            <div class="card-body">
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-    </section>
 
+<body>
+    <div class="container-fluid">
+        <h1 class="display-3 text-center">NOS ACTIONS</h1>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+
+            @foreach ($actions as $uneAction)
+
+            <div class="col">
+                <div class="card">
+                    <img src={{$actions->image}} class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$actions->titre}}</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{$actions->date}}</li>
+                            <li class="list-group-item">{{$actions->adresseAction}}</li>
+                        </ul>
+                        <p class="card-text">{{$actions->contenu}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src={{$actions->image}} class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$actions->titre}}</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{$actions->date}}</li>
+                            <li class="list-group-item">{{$actions->adresseAction}}</li>
+                        </ul>
+                        <p class="card-text">{{$actions->contenu}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src={{$actions->image}} class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$actions->titre}}</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{$actions->date}}</li>
+                            <li class="list-group-item">{{$actions->adresseAction}}</li>
+                        </ul>
+                        <p class="card-text">{{$actions->contenu}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <img src={{$actions->image}} class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">{{$actions->titre}}</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">{{$actions->date}}</li>
+                            <li class="list-group-item">{{$actions->adresseAction}}</li>
+                        </ul>
+                        <p class="card-text">{{$actions->contenu}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 </body>
+
 </html>

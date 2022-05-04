@@ -9,9 +9,16 @@ Ajout D'une Activite
         <h1>Fomulaire d'ajout d'une Activite</h1>
         <form action="/activite" method="post" enctype="multipart/form-data">
             @csrf
+            <input type="hidden"  value="2" name="idVilles">
+
+            <select name="idVilles" id="">
+                @foreach ($villes as $uneVille)
+                <option value="{{$uneVille->id}}">{{$uneVille->id}} : {{$uneVille->Nom}} </option>
+                @endforeach
+            </select>
             <div class="row mb-2">
                 <label for="type">TYPE</label>
-                <input name="type" minlength="2" maxlength="100" required type="text" class="form-control" id="type"
+                <input name="type"  required type="text" class="form-control" id="type"
                     placeholder="le type de l'activite">
                 @error("type")
                 <div class="text-danger">{{$message}}</div>
@@ -19,10 +26,10 @@ Ajout D'une Activite
             </div>
 
             <div class="row mb-2">
-                <label for="nom">NOM</label>
-                <input name="nom" min="0" required type="number" class="form-control" id="nom"
+                <label for="nomVille">NOM Ville</label>
+                <input name="nomVille" min="0" required type="text" class="form-control" id="nomVille"
                     placeholder="indiquer le nom de l'activite">
-                @error("nom")
+                @error("nomVille")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>

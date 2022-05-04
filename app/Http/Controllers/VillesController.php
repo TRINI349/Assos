@@ -26,7 +26,7 @@ class VillesController extends Controller
      */
     public function create()
     {
-        return view('creatVille');
+        return view('ville.createVille');
     }
 
     /**
@@ -37,8 +37,19 @@ class VillesController extends Controller
      */
     public function store(Request $request)
     {
+         //Validation des champs/attributs
+         $attributs=$request->validate(
+            [
+                "nom"=>"required|string"
+            ]);
 
+            //Enregistrement de l'action dans la table
+        Villes::create($attributs);
+
+            //redirection vers le dashboard
+        return redirect("/ville");
     }
+
 
     /**
      * Display the specified resource.
@@ -64,7 +75,7 @@ class VillesController extends Controller
     {
         $villes = Villes::find($id);
 
-        return view('editVilles', ["uneVille",$villes]);
+        return view('ville.modifierVille', ["uneVille"=>$villes]);
     }
 
     /**
@@ -77,13 +88,18 @@ class VillesController extends Controller
     public function update(Request $request, Villes $villes,$id)
     {
 
-        $attribut = Villes::find($request->id);
+        $attributs = Villes::find($request->id);
 
+        $attributs = $request->validate(
 
-        $attribut->save();
-        return redirect()->action(
-            [Villes::class, 'index']
-        )->with('message', 'Ville à jour');
+        [
+            "nom"=>"required|string"
+        ]);
+
+        $villes->update($attributs);
+        //Le message flash
+        session()->flash("success","$villes->nom a bien était modifier ! ");
+        return redirect("/ville");
     }
 
     /**
@@ -92,10 +108,10 @@ class VillesController extends Controller
      * @param  \App\Models\Villes  $villes
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Villes $villes,$id)
+    public function destroy($id)
     {
-        $villes = Villes::find($id);
+        $villes = Villes::findOrFail($id);
         $villes->delete();
-        return redirect('showVilles')->with('message', 'Ville supprimer');
+        return redirect('/ville')->with('message', 'Ville supprimer');
     }
 }

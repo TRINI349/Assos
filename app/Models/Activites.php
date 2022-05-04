@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Activites extends Model
 {
     use HasFactory;
-    protected $fillable=['type','nom'];
+    protected $fillable=['type','nomVille','idVilles'];
 
     public function Villes(){
         return $this-> belongsTo(villes::class);

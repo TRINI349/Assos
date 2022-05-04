@@ -9,7 +9,7 @@ class Actions extends Model
 {
     use HasFactory;
 
-    protected $fillable=['dateAction','titre','adresseAction','content','image'];
+    protected $fillable=['dateAction','titre','adresseAction','contenu','image',"idActivites"];
 
     public function Activites(){
         return $this->belongsTo(Activites::class);

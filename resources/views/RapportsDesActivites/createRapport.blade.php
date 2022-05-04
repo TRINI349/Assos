@@ -20,7 +20,7 @@ Ajout D'un Rapport d'activite
 
             <div class="row mb-2">
                 <label for="lien Fichier">LIEN FICHIER</label>
-                <input name="lien Fichier" min="0" required type="number" class="form-control" id="lien Fichier"
+                <input name="lien Fichier"  type="text" class="form-control" id="lien Fichier"
                     placeholder="indiquer le lien du fichier">
                 @error("lien Fichier")
                 <div class="text-danger">{{$message}}</div>

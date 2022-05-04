@@ -27,26 +27,30 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
 
 
-            $ville1=Villes::create(['nom'=>'villiers sur marne']);
-            $ville2=Villes::create(['nom'=>'la queue en brie']);
-            $ville3=Villes::create(['nom'=>'plessis trevise']);
-            $ville4=Villes::create(['nom'=>'bry sur marne']);
+            $ville=Villes::create(['nom'=>'villiers sur marne']);
+            $ville=Villes::create(['nom'=>'la queue en brie']);
+            $ville=Villes::create(['nom'=>'plessis trevise']);
+            $ville=Villes::create(['nom'=>'bry sur marne']);
 
 
 
-            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'villiers sur marne','idVilles'=>'1']);
-            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'plessis trevise','idVilles'=>'3']);
-            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'la queue en brie','idVilles'=>'2']);
-            $activite=Activites::create(['type'=>'prevention Specialisee','nom'=>'bry sur marne','idVilles'=>'4']);
-            $activite=Activites::create(['type'=>'auto-ecole','nom'=>'villiers sur marne','idVilles'=>'1']);
+            $activite=Activites::create(['type'=>'prevention Specialisee','nomVille'=>'villiers sur marne','idVilles'=>'1']);
+            $activite=Activites::create(['type'=>'prevention Specialisee','nomVille'=>'plessis trevise','idVilles'=>'3']);
+            $activite=Activites::create(['type'=>'prevention Specialisee','nomVille'=>'la queue en brie','idVilles'=>'2']);
+            $activite=Activites::create(['type'=>'prevention Specialisee','nomVille'=>'bry sur marne','idVilles'=>'4']);
+            $activite=Activites::create(['type'=>'auto-ecole','nomVille'=>'villiers sur marne','idVilles'=>'1']);
 
             Actions::create([
-                'dateAction'=>'2022-05-31',
-                'titre'=>'MonTitre',
-                'contenu'=>'MonContenu',
-                'image'=>'monImage',
-                'adresseAction'=>'11 rue feederic passy',
-                'idActivites'=>'2'   ]);
+                'idActivites'=>'2',
+                'titre'=>'Chantier séjour ',
+                'dateAction'=>'2021/08/01',
+                'contenu'=>'Nous avons co-construit avec des jeunes de Villiers sur marne un projet de séjour.
+                Les jeunes ont, début juillet, participé à un chantier éducatif de peinture sur leur quartier pour pouvoir financer des vacances.
+                Fin juillet nous sommes partis avec ce groupe de 6 jeunes en camping en Vendée autour d’activités sportives.
+                    ',
+                'adresseAction'=>'VILLIERS SUR MARNE',
+                'image'=>'monImage'
+                 ]);
 
             RapportsDesActivites::create(['annee'=>'2019','lien'=>'lien1','idActivites'=>'2']);
             RapportsDesActivites::create(['annee'=>'2020','lien'=>'lien2','idActivites'=>'2']);

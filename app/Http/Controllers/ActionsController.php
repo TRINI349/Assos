@@ -4,8 +4,9 @@ namespace App\Http\Controllers;
 
 
 use App\Models\Actions;
+use App\Models\Activites;
 use Illuminate\Http\Request;
-
+use Symfony\Contracts\Service\Attribute\Required;
 
 class ActionsController extends Controller
 {
@@ -17,7 +18,8 @@ class ActionsController extends Controller
     public function index()
     {
         $actions=Actions::all();
-        return view('action.action',["actions"=>$actions]);
+       // dd($action);
+                return view('action.action',["actions"=>$actions]);
     }
 
 
@@ -30,7 +32,7 @@ class ActionsController extends Controller
     public function create()
     {
 
-        return view('action.createAction');
+        return view('action.createAction',["activites"=>Activites::all()]);
     }
 
     /**
@@ -47,14 +49,18 @@ class ActionsController extends Controller
             ["titre"=>"required|min:2|max:100|string",
                 "dateAction"=>"date|required",
                 "adresseAction"=>"string|required",
-                "contenue"=>"required|string",
-                "image"=>"required|image"]);
+                "contenu"=>"required|string",
+                "image"=>"required|image",
+                "idActivites"=>"numeric|required"]);
 
-             //Enregistre sur le serveur le drapeau
-        $cheminImage=$request->file("#")->store("actions");
+                        //Enregistre sur le serveur le drapeau
+                        $cheminImage=$request->file("image")->store("actions");
 
-             //Remplace le chemin de l'image dans les attributs
-        $attributs["monImage"]=$cheminImage;
+                        //Remplace le chemin de l'image dans les attributs
+                        $attributs["image"]=$cheminImage;
+
+
+
 
             //Enregistrement de l'action dans la table
         Actions::create($attributs);
@@ -117,17 +123,17 @@ class ActionsController extends Controller
 
 
 
-    if($request->monImage){
+    if($request->image){
 
         //Enregistre sur le serveur le drapeau
-        $cheminImage=$request->file("monImage")->store("action");
+        $cheminImage=$request->file("image")->store("action");
         //Remplace le chemin de l'image dans les attributs
-        $attributs["monImage"]=$cheminImage;
+        $attributs["image"]=$cheminImage;
         }
         //Mettre a jour le pays avec de nouveau attributs
         $actions->update($attributs);
         //Le message flash
-        session()->flash("success","$actions->titre a bien était modifier ! ");
+        session()->flash("success","$actions->nom a bien était modifier ! ");
         return redirect("/action");
         }
 
@@ -142,6 +148,6 @@ class ActionsController extends Controller
     {
         $actions =Actions::findOrFail($id);
         $actions->delete();
-        return redirect('action')->with('message','Action supprimer');
+        return redirect('/action')->with('message','Action supprimer');
     }
 }

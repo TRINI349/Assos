@@ -9,6 +9,15 @@ Ajout D'une Action
         <h1>Fomulaire d'ajout d'une Action</h1>
         <form action="/action" method="post" enctype="multipart/form-data">
             @csrf
+
+            <input type="hidden"  value="2" name="idActivites">
+
+            <select name="idActivites" id="">
+                @foreach ($activites as $uneActivite)
+                <option value="{{$uneActivite->id}}">{{$uneActivite->Nom}} : {{$uneActivite->Type}}</option>
+                @endforeach
+            </select>
+
             <div class="row mb-2">
                 <label for="titre">TITRE</label>
                 <input name="titre" minlength="2" maxlength="100" required type="text" class="form-control" id="titre"
@@ -20,8 +29,9 @@ Ajout D'une Action
 
             <div class="row mb-2">
                 <label for="dateAction">DATE ACTION</label>
-                <input name="dateAction" min="0" required type="number" class="form-control" id="dateAction"
+                <input name="dateAction" min="2021-01-01" required type="date" class="form-control" id="dateAction"
                     placeholder="indiquer la date de l'action">
+                    <label for="start">Start date:</label>
                 @error("dateAction")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
@@ -49,7 +59,7 @@ Ajout D'une Action
 
             <div class="row mb-2">
                 <label for="image">Image</label>
-                <input name="drapeau" required type="file" accept="image" class="form-control" id="image" placeholder="Rechercher une image">
+                <input name="image"  type="file" accept="image" class="form-control" id="image" placeholder="Rechercher une image">
                 @error("image")
                 <div class="text-danger">{{$message}}</div>
                 @enderror

@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\RapportsDesActivites;
+use App\Models\Activites;
 use Illuminate\Http\Request;
+use App\Models\RapportsDesActivites;
 
 class RapportsDesActivitesController extends Controller
 {
@@ -25,8 +26,7 @@ class RapportsDesActivitesController extends Controller
      */
     public function create()
     {
-        return view('rapportsDesActivites.createRapport
-        ');
+        return view('rapportsDesActivites.createRapport',["activites"=>Activites::all()]);
     }
 
     /**
@@ -35,19 +35,27 @@ class RapportsDesActivitesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request ,RapportsDesActivites $id)
+
     {
-        $validated = $request->validate([
+        $rapportsDesActivites=RapportsDesActivites::find($request->id);
+        $attributs = $request->validate([
             'fichier' => 'string|required',
             'lien' => 'string|required'
         ]);
 
-            $rapportsDesActivites = new RapportsDesActivites();
-            $rapportsDesActivites->name = $request->name;
-            $rapportsDesActivites->type = $request->type;
+            // $rapportsDesActivites = new RapportsDesActivites();
+            // $rapportsDesActivites->name = $request->name;
+            // $rapportsDesActivites->type = $request->type;
+                // $rapportsDesActivites->save();
+                // return redirect('/rapportsDesActivites')->with('message', 'Rapport ajouter');
 
-            $rapportsDesActivites->save();
-        return redirect('rapportsDesActivites')->with('message', 'Rapport ajouter');
+            $rapportsDesActivites->update($attributs);
+            //Le message flash
+            session()->flash("success","$rapportsDesActivites->type a bien était modifier ! ");
+            return redirect("/rapportsDesActivtes");
+
+
     }
 
     /**
@@ -82,7 +90,7 @@ class RapportsDesActivitesController extends Controller
      * @param  \App\Models\RapportsDesActivites  $rapportsDesActivites
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RapportsDesActivites $rapportsDesActivites)
+    public function update(Request $request, RapportsDesActivites $rapportsDesActivites,$id)
     {
 
     $rapportsDesActivites=RapportsDesActivites::find($request->id);
@@ -106,10 +114,10 @@ class RapportsDesActivitesController extends Controller
      * @param  \App\Models\RapportsDesActivites  $rapportsDesActivites
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RapportsDesActivites $rapportsDesActivites,$id)
+    public function destroy($id)
     {
         $rapportsDesActivites = RapportsDesActivites::findOrFail($id);
         $rapportsDesActivites->delete();
-        return redirect('rapportsDesActivites.rapportsDesActivites')->with('message', 'Rapport supprimer');
+        return redirect('/rapportsDesActivites')->with('message', 'Rapport supprimer');
     }
 }

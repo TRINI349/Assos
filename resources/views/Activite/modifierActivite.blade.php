@@ -22,10 +22,10 @@ Modification D'une Activite
             </div>
 
             <div class="row mb-2">
-                <label for="nom">NOM</label>
-                <input name="nom" min="0" required type="number" class="form-control" id="nom"
-                    placeholder="indique le nom de  l'activite" value="{{$uneActivite->nom}}">
-                @error("nom")
+                <label for="nomVille">NOM Ville</label>
+                <input name="nomVille"  required type="text" class="form-control" id="nomVille"
+                    placeholder="indique le nom de  l'activite" value="{{$uneActivite->nomVille}}">
+                @error("nomVille")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>

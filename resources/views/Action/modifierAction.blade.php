@@ -50,7 +50,7 @@ Modification D'une Action
 
             <div class="row mb-2">
                 <label for="image">Image</label>
-                <input name="drapeau" type="file" accept="image" class="form-control" id="image" placeholder="Rechercher une image" value="{{$uneAction->image}}">
+                <input name="image" type="file" accept="image" class="form-control" id="image" placeholder="Rechercher une image">
                 @error("image")
                 <div class="text-danger">{{$message}}</div>
                 @enderror

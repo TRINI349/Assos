@@ -14,7 +14,8 @@ Modification D'une Ville
             <input type="hidden" name="id" value="{{$uneVille->id}}">
             <div class="row mb-2">
                 <label for="nom">NOM</label>
-                <input name="nom" minlength="2" maxlength="100" required type="text" class="form-control" id="nom"
+                <input name="nom"
+                 required type="text" class="form-control" id="nom"
                     placeholder="le titre de l'action" value="{{$uneVille->nom}}">
                 @error("nom")
                 <div class="text-danger">{{$message}}</div>

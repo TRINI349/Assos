@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Activites;
+use App\Models\Villes;
 use Illuminate\Http\Request;
 
 class ActivitesController extends Controller
@@ -25,7 +26,7 @@ class ActivitesController extends Controller
      */
     public function create()
     {
-        return view('activite.createActivite');
+        return view('activite.createActivite',["villes"=>Villes::all()]);
     }
 
     /**
@@ -39,15 +40,16 @@ class ActivitesController extends Controller
 
         //Validation des champs/attributs
         $attributs=$request->validate(
-            ["type"=>"required|min:2|max:100|string",
-                "nom"=>"string|required"
+            ["type"=>"required|string",
+                "nomVille"=>"string|required",
+                "idVilles"=>"numeric|required"
             ]);
 
             //Enregistrement de l'action dans la table
         Activites::create($attributs);
 
             //redirection vers le dashboard
-        return redirect("activite.creatActivite");
+        return redirect("/activite");
     }
 
 
@@ -84,18 +86,18 @@ class ActivitesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request, $id)
+    public function update(Request $request,Activites $id)
     {
 
 
 
-        $activites=Activites::find($request->$id);
+        $activites=Activites::find($request->id);
 
         $attributs = $request->validate(
 
         [
             "type"=>"required|min:2|max:100|string",
-            "nom"=>"string|required"
+            "nomVille"=>"string|required"
         ]);
 
         $activites->update($attributs);
@@ -119,7 +121,7 @@ class ActivitesController extends Controller
     {
         $activites = Activites::findOrFail($id);
         $activites->delete();
-        return redirect('activite')
+        return redirect('/activite')
         ->with('message', 'Activite supprimer');
     }
 }
