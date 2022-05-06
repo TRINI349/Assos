@@ -25,7 +25,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('Role');
+        return view('Role.createRole');
     }
 
     /**
@@ -46,7 +46,7 @@ class RoleController extends Controller
         Role::create($attributs);
 
         //redirection vers le dashboard
-    return redirect("Role.creatRole");
+    return redirect("/Role");
 
     }
 

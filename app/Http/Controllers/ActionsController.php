@@ -17,7 +17,7 @@ class ActionsController extends Controller
      */
     public function index()
     {
-        $actions=Actions::all();
+        $actions=Actions::paginate(4);
        // dd($action);
                 return view('action.action',["actions"=>$actions]);
     }
@@ -51,7 +51,7 @@ class ActionsController extends Controller
                 "adresseAction"=>"string|required",
                 "contenu"=>"required|string",
                 "image"=>"required|image",
-                "idActivites"=>"numeric|required"]);
+                'idActivites'=>'numeric|exists:activites,id|required']);
 
                         //Enregistre sur le serveur le drapeau
                         $cheminImage=$request->file("image")->store("actions");
@@ -67,7 +67,7 @@ class ActionsController extends Controller
 
             //redirection vers le dashboard
             session()->flash("success","L'action a bien été ajouter !");
-        return redirect('action.createAction');
+        return redirect('/action');
     }
 
     /**
@@ -117,7 +117,8 @@ class ActionsController extends Controller
             "dateAction"=>"date|required",
             "adresseAction"=>"string|required",
             "contenue"=>"required|string",
-            "image"=>"monImage"
+            "image"=>"monImage",
+            'idActivites'=>'numeric|exists:activites,id|required'
         ]
     );
 

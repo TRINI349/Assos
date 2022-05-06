@@ -14,18 +14,32 @@ Modification D'un Rapport d'activite
             <input type="hidden" name="id" value="{{$unRapportsDesActivites->id}}">
             <div class="row mb-2">
                 <label for="annee">ANNEE</label>
-                <input name="annee" minlength="2" maxlength="100" required type="text" class="form-control" id="annee"
-                    placeholder="l'année du rapport de l'activite" value="{{$unRapportsDesActivites->annee}}">
+                <input name="annee" value="{{$unRapportsDesActivites->annee}}" minlength="2" maxlength="100" required type="text" class="form-control" id="annee"
+                    placeholder="l'année du rapport">
                 @error("annee")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>
 
             <div class="row mb-2">
-                <label for="lien fichier">LIEN FICHIER</label>
-                <input name="lien fichier" min="0" required type="number" class="form-control" id="lien fichier"
-                    placeholder="indique le lien du fichier" value="{{$unRapportsDesActivites->lienFichier}}">
-                @error("lien fichier")
+                <label for="lien">LIEN</label>
+                <input name="lien" value="{{$unRapportsDesActivites->lien}}"  type="text" class="form-control" id="lien"
+                    placeholder="indiquer le lien du fichier">
+                @error("lien")
+                <div class="text-danger">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="row mb-2">
+                <label for="activite">ACTIVITE</label>
+                <select name="idActivites"  class="form-control" id="activite">
+                    @foreach ($activites as $uneActivite)
+                    <option selected="{{$unRapportsDesActivites->idActivites==$uneActivite->id}}" value="{{$uneActivite->id}}">{{$uneActivite->nomVille}} : {{$uneActivite->type}}</option>
+
+
+
+                    @endforeach
+                </select>
+                @error("activite")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>

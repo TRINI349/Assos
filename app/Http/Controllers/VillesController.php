@@ -71,11 +71,11 @@ class VillesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit(Villes $villes,$id)
+    public function edit(Villes $ville)
     {
-        $villes = Villes::find($id);
+        // $villes = Villes::find($id);
 
-        return view('ville.modifierVille', ["uneVille"=>$villes]);
+        return view('ville.modifierVille', ["uneVille"=>$ville]);
     }
 
     /**
@@ -85,20 +85,20 @@ class VillesController extends Controller
      * @param  \App\Models\Villes  $villes
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Villes $villes,$id)
+    public function update(Request $request, Villes $ville)
     {
 
-        $attributs = Villes::find($request->id);
-
+        // $villes = Villes::find($request->id);
+        // dd($ville);
         $attributs = $request->validate(
 
         [
             "nom"=>"required|string"
         ]);
 
-        $villes->update($attributs);
+        $ville->update($attributs);
         //Le message flash
-        session()->flash("success","$villes->nom a bien était modifier ! ");
+        session()->flash("success","$ville->nom a bien était modifier ! ");
         return redirect("/ville");
     }
 
@@ -108,10 +108,10 @@ class VillesController extends Controller
      * @param  \App\Models\Villes  $villes
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Villes $ville)
     {
-        $villes = Villes::findOrFail($id);
-        $villes->delete();
+        // $villes = Villes::findOrFail($id);  //pour le trouver la stoker et s'il ne l'a rouve pas il m'affiche la page 404
+        $ville->delete();
         return redirect('/ville')->with('message', 'Ville supprimer');
     }
 }

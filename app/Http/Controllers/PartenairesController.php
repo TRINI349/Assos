@@ -42,10 +42,12 @@ class PartenairesController extends Controller
             ["nom"=>"required|string"]);
 
             //Enregistrement de l'action dans la table
-        Partenaires::create($attributs);
+       $partenaires=Partenaires::create($attributs);
 
             //redirection vers le dashboard
-        return redirect("partenaire.createPartenaires");
+            session()->flash("success","$partenaires->nom a bien était modifier ! ");
+
+        return redirect("/partenaire");
     }
 
 
@@ -68,7 +70,7 @@ class PartenairesController extends Controller
      * @param  \App\Models\Partenaires  $partenaires
      * @return \Illuminate\Http\Response
      */
-    public function edit(Partenaires $partenaires, $id)
+    public function edit($id)
     {
         $partenaires=Partenaires::find($id);
 
@@ -84,12 +86,11 @@ class PartenairesController extends Controller
      */
     public function update(Request $request, Partenaires $partenaires, $id)
     {
-        $partenaires=Partenaires::find($request->$id);
+        $partenaires=Partenaires::find($request->id);
 
         $attributs = $request->validate(
 
         [
-
             "nom"=>"string|required"
         ]);
 
@@ -97,6 +98,7 @@ class PartenairesController extends Controller
         //Le message flash
         session()->flash("success","$partenaires->nom a bien était modifier ! ");
         return redirect("/partenaire");
+
     }
 
     /**
@@ -109,7 +111,6 @@ class PartenairesController extends Controller
     {
         $partenaires = Partenaires::findOrFail($id);
         $partenaires->delete();
-        return redirect('partenaire')
-        ->with('message', 'Partenaire supprimer');
+        return redirect('/partenaire')->with('message', 'Partenaire supprimer');
     }
 }

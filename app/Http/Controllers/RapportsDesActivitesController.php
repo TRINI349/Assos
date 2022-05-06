@@ -35,13 +35,14 @@ class RapportsDesActivitesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request ,RapportsDesActivites $id)
+    public function store(Request $request)
 
     {
-        $rapportsDesActivites=RapportsDesActivites::find($request->id);
+
         $attributs = $request->validate([
-            'fichier' => 'string|required',
-            'lien' => 'string|required'
+            'annee' => 'string|required',
+            'lien' => 'string',
+            'idActivites'=>'numeric|exists:activites,id|required' //verifier le id activite correspond bien à un id dans la  table activite
         ]);
 
             // $rapportsDesActivites = new RapportsDesActivites();
@@ -50,10 +51,10 @@ class RapportsDesActivitesController extends Controller
                 // $rapportsDesActivites->save();
                 // return redirect('/rapportsDesActivites')->with('message', 'Rapport ajouter');
 
-            $rapportsDesActivites->update($attributs);
+            $rapportsDesActivites=RapportsDesActivites::create($attributs);
             //Le message flash
             session()->flash("success","$rapportsDesActivites->type a bien était modifier ! ");
-            return redirect("/rapportsDesActivtes");
+            return redirect("/rapportsDesActivites");
 
 
     }
@@ -75,12 +76,12 @@ class RapportsDesActivitesController extends Controller
      * @param  \App\Models\RapportsDesActivites  $rapportsDesActivites
      * @return \Illuminate\Http\Response
      */
-    public function edit(RapportsDesActivites $rapportsDesActivites,$id)
+    public function edit(RapportsDesActivites $rapportsDesActivites)
     {
-        $rapportsDesActivites = RapportsDesActivites::findOfFail($id);
+        // $rapportsDesActivites = RapportsDesActivites::findOfFail($id);
 
 
-        return view('rapportsDesActivites.modifierRapport',['unRapportsDesActivites'=>$rapportsDesActivites]);
+        return view('rapportsDesActivites.modifierRapport',['unRapportsDesActivites'=>$rapportsDesActivites,'activites'=>Activites::all()]);
     }
 
     /**
@@ -90,22 +91,23 @@ class RapportsDesActivitesController extends Controller
      * @param  \App\Models\RapportsDesActivites  $rapportsDesActivites
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RapportsDesActivites $rapportsDesActivites,$id)
+    public function update(Request $request, RapportsDesActivites $rapportsDesActivites)
     {
 
-    $rapportsDesActivites=RapportsDesActivites::find($request->id);
+    // $rapportsDesActivites=RapportsDesActivites::find($request->id);
 
     $attributs = $request->validate(
 
     [
-        'fichier'=>'required|min:2|max:100|string',
-        'lien'=>'string'
+        'annee'=>'required|min:2|max:100|string',
+        'lien'=>'string',
+        'idActivites'=>'numeric|exists:activites,id|required'
     ]);
 
     $rapportsDesActivites->update($attributs);
     //Le message flash
     session()->flash("success","$rapportsDesActivites->fichier a bien était modifier ! ");
-    return redirect('/modifierRapport');
+    return redirect('/rapportsDesActivites');
 }
 
     /**
@@ -114,9 +116,9 @@ class RapportsDesActivitesController extends Controller
      * @param  \App\Models\RapportsDesActivites  $rapportsDesActivites
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(RapportsDesActivites $rapportsDesActivites)  //il a qu'un seul parametres son type et son nom (le type c est la classe et le nom c est sa variable)
     {
-        $rapportsDesActivites = RapportsDesActivites::findOrFail($id);
+        // $rapportsDesActivites = RapportsDesActivites::findOrFail($id);
         $rapportsDesActivites->delete();
         return redirect('/rapportsDesActivites')->with('message', 'Rapport supprimer');
     }

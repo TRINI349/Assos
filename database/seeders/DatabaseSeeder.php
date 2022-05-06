@@ -66,9 +66,9 @@ class DatabaseSeeder extends Seeder
 
             User::create(['nom'=>'monNom','prenom'=>'monPrenom','email'=>'cdesamblanc@emmaus-synergie.fr','password'=>bcrypt('emmaussynergie'),'idRoles'=>$super->id]);
 
-            Partenaires::create(['nom'=>'CAF',
-                                'nom'=>'PARIS EST MARNE ET BOIS',
-                                'nom'=>'Code Rousseau']);
+            Partenaires::create(['nom'=>'CAF']);
+            Partenaires::create(['nom'=>'PARIS EST MARNE ET BOIS']);
+
 
 
 

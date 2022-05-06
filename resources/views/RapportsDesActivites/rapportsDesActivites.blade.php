@@ -7,7 +7,7 @@ Gestion des rapports d'activites
 @section("contenu")
 <h1 class="my-2">Les rapports des activites</h1>
 <a class="btn btn-primary mb-2" href="rapportsDesActivites/create">Ajouter un nouveau rapport d'activite</a>
- <table class="table">
+ <table class="table my-4 text-light">
      <thead>
          <tr>
             <th>Id</td>
@@ -27,6 +27,7 @@ Gestion des rapports d'activites
                     <form class="col row mx-2" action="rapportsDesActivites/{{$unRapportsDesActivites->id}}" method="post">
 
                         @csrf
+                         @method('delete')
                         <input type="hidden" name="id">
                         <button class="btn btn-primary">Supprimer</button>
                     </form>

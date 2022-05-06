@@ -29,17 +29,22 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('admin.index');
+// })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+
+
+
+Route::get('/Accueil',function(){
+    return view('site.Accueil');
+});
 
 
 Route::resource('action',ActionsController::class);
 Route::resource('activite',ActivitesController::class);
-Route::resource('rapportsDesActivites',RapportsDesActivitesController::class);
-Route::resource('ville',VillesController::class);
+Route::resource('rapportsDesActivites',RapportsDesActivitesController::class)->parameters(['rapportsDesActivites'=>'rapportsDesActivites']);
+Route::resource('ville',VillesController::class)->except('show')->parameters(['ville'=>'ville']); //il y a des parametres cle et valeurs la cle correspond la resources et le valeurs le nom du parametres dans les methodes du controlleurs
 Route::resource('Role',RoleController::class);
 Route::resource('partenaire',PartenairesController::class);
 

@@ -19,10 +19,25 @@ Ajout D'un Rapport d'activite
             </div>
 
             <div class="row mb-2">
-                <label for="lien Fichier">LIEN FICHIER</label>
-                <input name="lien Fichier"  type="text" class="form-control" id="lien Fichier"
+                <label for="lien">LIEN</label>
+                <input name="lien"  type="text" class="form-control" id="lien"
                     placeholder="indiquer le lien du fichier">
-                @error("lien Fichier")
+                @error("lien")
+                <div class="text-danger">{{$message}}</div>
+                @enderror
+            </div>
+            <div class="row mb-2">
+                <label for="activite">ACTIVITE</label>
+                <select name="idActivites" class="form-control" id="activite" required>
+                    <option disabled  selected>Veuillez selectionnez une activite</option>
+                    @foreach ($activites as $uneActivite)
+                    <option value="{{$uneActivite->id}}">{{$uneActivite->nomVille}} : {{$uneActivite->type}}</option>
+
+
+
+                    @endforeach
+                </select>
+                @error("activite")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>

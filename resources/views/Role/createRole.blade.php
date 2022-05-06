@@ -11,7 +11,7 @@ Ajout D'un Role
             @csrf
             <div class="row mb-2">
                 <label for="nom">NOM</label>
-                <input name="nom" minlength="2" maxlength="100" required type="text" class="form-control" id="nom"
+                <input name="nom" minlength="2" maxlength="100" required type="text"  class="form-control" id="nom"
                     placeholder="le nom">
                 @error("nom")
                 <div class="text-danger">{{$message}}</div>

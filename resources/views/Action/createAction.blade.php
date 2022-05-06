@@ -10,13 +10,18 @@ Ajout D'une Action
         <form action="/action" method="post" enctype="multipart/form-data">
             @csrf
 
-            <input type="hidden"  value="2" name="idActivites">
-
-            <select name="idActivites" id="">
-                @foreach ($activites as $uneActivite)
-                <option value="{{$uneActivite->id}}">{{$uneActivite->Nom}} : {{$uneActivite->Type}}</option>
-                @endforeach
-            </select>
+            <div class="row mb-2">
+                <label for="activite">ACTIVITE</label>
+                <select name="idActivites" class="form-control" id="activite" required>
+                    <option disabled  selected>Veuillez selectionnez une activite</option>
+                    @foreach ($activites as $uneActivite)
+                    <option value="{{$uneActivite->id}}">{{$uneActivite->nomVille}} : {{$uneActivite->type}}</option>
+                    @endforeach
+                </select>
+                @error("idActivites")
+                <div class="text-danger">{{$message}}</div>
+                @enderror
+            </div>
 
             <div class="row mb-2">
                 <label for="titre">TITRE</label>
@@ -48,11 +53,11 @@ Ajout D'une Action
             </div>
 
             <div class="row mb-2">
-                <label for="contenue">CONTENUE</label>
-                <input name="contenue" minlength="4" required type="" class="form-control" id="contenue"
+                <label for="contenu">CONTENUE</label>
+                <input name="contenu" minlength="4" required type="" class="form-control" id="contenu"
                     placeholder="indiquer le contenue de l'action">
                     <!--Pour afficher les messages d'erreurs pour les differents chanps on peut utiliser la directive error-->
-                @error("contenue")
+                @error("contenu")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>
@@ -64,6 +69,8 @@ Ajout D'une Action
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>
+
+
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
