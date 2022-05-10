@@ -21,6 +21,7 @@ use App\Http\Controllers\RapportsDesActivitesController;
 |
 */
 
+require __DIR__.'/auth.php';
 
 Route::get('/contact',[Controller::class,"contactForm"]);
 Route::post('/contact',[Controller::class,"envoyerEmail"]);
@@ -30,10 +31,8 @@ Route::get('/', function () {
 });
 
 // Route::get('/dashboard', function () {
-//     return view('admin.index');
+//     return view('admin.dashboard');
 // })->middleware(['auth'])->name('dashboard');
-
-
 
 
 Route::get('/Accueil',function(){
@@ -48,7 +47,7 @@ Route::resource('ville',VillesController::class)->except('show')->parameters(['v
 Route::resource('Role',RoleController::class);
 Route::resource('partenaire',PartenairesController::class);
 
-Route::get('/admin',[AdminController::class,'dashboard'])->middleware(['eAdmin'])->name('eAdmin'); // le nom de la route peut etre nomme differament
+Route::get('/dashboard',[AdminController::class,'dashboard'])->middleware(['eAdmin'])->name('eAdmin'); // le nom de la route peut etre nomme differament
 
 
 // Route::get('action.action',[ActionsController::class,'index']);

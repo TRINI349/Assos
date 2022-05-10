@@ -1,6 +1,6 @@
 
 <div class="container-fluid">
-    <div class="row">
+    < class="row">
         <div id="logoImg" class="col-lg-4 align-self-start">
 
                 <img  id="logoDesign" src="{{asset('images/EmmausSynergie.jpg')}}"  alt="">
@@ -14,11 +14,10 @@
 
         </div>
 
-        </div>
+
 
     </div>
-
-<hr>
+</div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
 
@@ -42,19 +41,10 @@
           </li>
 
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('activity.all') }}">ACTIVITY</a>
+            <a class="nav-link active" aria-current="page" href="{{ route('activite.all') }}">ACTIVITE</a>
           </li>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('rapport.all') }}">RAPPORT</a>
-          </li>
 
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('partenaire.all') }}">PARTENAIRE</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('ville.all') }}">VILLES</a>
-          </li>
         </ul>
       </div>
     </div>
@@ -62,4 +52,4 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-  </nav>
+</nav>

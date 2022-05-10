@@ -1,4 +1,4 @@
-@extends('layouts.base')
+@extends('layouts.userBase')
 @section('titre')
 NOS ACTIONS
 @endsection

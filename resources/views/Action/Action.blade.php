@@ -8,7 +8,7 @@ Gestion des actions
 @section("contenu")
 
 <h1 class="display-4 text-center my-5">Les actions</h1>
-<div class="action row justify-content-right gx-3">
+<div class="action row justify-content-right w-75 gx-3">
 <a class="btn btn-primary mb-2" href="action/create">Ajouter une nouvelle action</a>
  <table class="table my-4 text-light">
      <thead>
@@ -29,7 +29,7 @@ Gestion des actions
                 <td>{{$uneAction->dateAction}}</td>
                 <td>{{$uneAction->adresseAction}}</td>
                 <td>{{$uneAction->contenue}}</td>
-                <td><img src="/storage/{{$uneAction->image}}"></td>
+                <td><img class="w-75" src="/storage/{{$uneAction->image}}"></td>
                 <td class="col-4 col-lg-3">
                     <div class="row">
                     <a class="btn btn-primary col mx-2" href="action/{{$uneAction->id}}/edit">Modifier</a>

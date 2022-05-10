@@ -1,10 +1,3 @@
-@extends('layouts.base')
-@section('titre')
-    Dashboard
-@endsection
-@section('contenu')
-
-
     <style>
       .bd-placeholder-img {
         font-size: 1.125rem;
@@ -27,8 +20,8 @@
 
 
 
-<div class="container-fluid ">
-  <div class="row">
+<div>
+
     <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-dark  sidebar collapse">
       <div class="position-sticky pt-3 mt-5">
         <ul class="nav flex-column">
@@ -84,13 +77,8 @@
       </div>
     </nav>
 
-    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2 text-primary">Dashboard</h1>
-      </div>
-    </main>
-  </div>
-</div>
-@endsection
+
+
+
 
 
