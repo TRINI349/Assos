@@ -53,7 +53,7 @@ class RapportsDesActivitesController extends Controller
 
             $rapportsDesActivites=RapportsDesActivites::create($attributs);
             //Le message flash
-            session()->flash("success","$rapportsDesActivites->type a bien était modifier ! ");
+
             return redirect("/rapportsDesActivites");
 
 

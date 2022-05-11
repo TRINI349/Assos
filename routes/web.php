@@ -1,15 +1,16 @@
 <?php
 
+use App\Models\Actions;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\VillesController;
 use App\Http\Controllers\ActionsController;
 use App\Http\Controllers\ActivitesController;
 use App\Http\Controllers\PartenairesController;
 use App\Http\Controllers\RapportsDesActivitesController;
-use App\Models\Actions;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,6 +72,8 @@ Route::middleware('eAdmin')->group(function(){
     Route::resource('ville',VillesController::class)->except('show')->parameters(['ville'=>'ville']); //il y a des parametres cle et valeurs la cle correspond la resources et le valeurs le nom du parametres dans les methodes du controlleurs
     Route::resource('Role',RoleController::class);
     Route::resource('partenaire',PartenairesController::class);
+
+    Route::resource('user', UserController::class);
 
     Route::get('/dashboard',[AdminController::class,'dashboard']);
 });

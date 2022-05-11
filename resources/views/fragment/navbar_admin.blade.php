@@ -1,4 +1,4 @@
-<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-primary">
 
     <div class="container-fluid">
         <!-- Navbar Brand-->
@@ -12,12 +12,12 @@
 <div id="layoutSidenav">
     <div id="layoutSidenav_nav">
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-            <div class="sb-sidenav-menu">
+            <div class="sb-sidenav-menu bg-primary">
                 <div class="nav">
                     <form method="POST" action="{{URL::to('logout')}}">
                         @csrf
                         <button class="nav-link btn">
-                            <div class="sb-nav-link-icon"><i class="fa-solid fa-house"></i></div>
+                            <div class="sb-nav-link-icon text-black"><i class="fa-solid fa-house"></i></div>
                             Deconnexion
                         </button>
                     </form>
