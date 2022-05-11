@@ -9,6 +9,7 @@ use App\Http\Controllers\ActionsController;
 use App\Http\Controllers\ActivitesController;
 use App\Http\Controllers\PartenairesController;
 use App\Http\Controllers\RapportsDesActivitesController;
+use App\Models\Actions;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,24 +22,24 @@ use App\Http\Controllers\RapportsDesActivitesController;
 |
 */
 
-require __DIR__.'/auth.php';
-
-Route::get('/contact',[Controller::class,"contactForm"]);
-Route::post('/contact',[Controller::class,"envoyerEmail"]);
-Route::get('refreshcaptcha',[Controller::class, 'refreshCaptcha'])->name('refreshcaptcha');
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::get('/dashboard', function () {
 //     return view('admin.dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
+require __DIR__.'/auth.php';
+
+// site
+Route::get('/contact',[Controller::class,"contactForm"]);
+Route::post('/contact',[Controller::class,"envoyerEmail"]);
+Route::get('refreshcaptcha',[Controller::class, 'refreshCaptcha'])->name('refreshcaptcha');
 
 Route::get('/Accueil',function(){
     return view('site.Accueil');
 });
-
 
 Route::get('/Auto-ecole',function(){
     return view('site.Auto-ecole');
@@ -48,26 +49,34 @@ Route::get('/Histoire',function(){
     return view('site.Histoire');
 });
 
-Route::get('/NOS ACTIONS',function(){
-    return view('site.NOS ACTIONS');
+Route::get('/NOS-ACTIONS',function(){
+    $actions = Actions::paginate(4);
+    return view('site.NOS-ACTIONS')->with('actions', $actions);
 });
 
-Route::get('/NOS PARTENAIRES',function(){
-    return view('site.NOS PARTENAIRES');
+Route::get('/NOS-PARTENAIRES',function(){
+    return view('site.NOS-PARTENAIRES');
 });
 
 Route::get('/Prévention-Spécialisée',function(){
     return view('site.Prévention-Spécialisée');
 });
 
-Route::resource('action',ActionsController::class);
-Route::resource('activite',ActivitesController::class);
-Route::resource('rapportsDesActivites',RapportsDesActivitesController::class)->parameters(['rapportsDesActivites'=>'rapportsDesActivites']);
-Route::resource('ville',VillesController::class)->except('show')->parameters(['ville'=>'ville']); //il y a des parametres cle et valeurs la cle correspond la resources et le valeurs le nom du parametres dans les methodes du controlleurs
-Route::resource('Role',RoleController::class);
-Route::resource('partenaire',PartenairesController::class);
 
-Route::get('/dashboard',[AdminController::class,'dashboard'])->middleware(['eAdmin'])->name('eAdmin'); // le nom de la route peut etre nomme differament
+// dashboard
+Route::middleware('eAdmin')->group(function(){
+    Route::resource('action',ActionsController::class);
+    Route::resource('activite',ActivitesController::class);
+    Route::resource('rapportsDesActivites',RapportsDesActivitesController::class)->parameters(['rapportsDesActivites'=>'rapportsDesActivites']);
+    Route::resource('ville',VillesController::class)->except('show')->parameters(['ville'=>'ville']); //il y a des parametres cle et valeurs la cle correspond la resources et le valeurs le nom du parametres dans les methodes du controlleurs
+    Route::resource('Role',RoleController::class);
+    Route::resource('partenaire',PartenairesController::class);
+
+    Route::get('/dashboard',[AdminController::class,'dashboard']);
+});
+
+
+
 
 
 // Route::get('action.action',[ActionsController::class,'index']);

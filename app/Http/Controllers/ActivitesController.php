@@ -16,7 +16,7 @@ class ActivitesController extends Controller
     public function index()
     {
         $activites=Activites::all();
-        return view('activite.activite',["activites"=>$activites]);
+        return view('admin.activite.activite',["activites"=>$activites]);
     }
 
     /**
@@ -26,7 +26,7 @@ class ActivitesController extends Controller
      */
     public function create()
     {
-        return view('activite.createActivite',["villes"=>Villes::all()]);
+        return view('admin.activite.createActivite',["villes"=>Villes::all()]);
     }
 
     /**
@@ -75,7 +75,7 @@ class ActivitesController extends Controller
     {
         $activites=Activites::find($id);
 
-        return view('activite.modifierActivite', ["uneActivite"=>$activites]);
+        return view('admin.activite.modifierActivite', ["uneActivite"=>$activites]);
     }
 
     /**

@@ -1,5 +1,5 @@
 
-@extends("layouts.base")
+@extends("layouts.admin")
 
 @section("titre")
 dashboard

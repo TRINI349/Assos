@@ -1,5 +1,5 @@
 
-@extends("layouts.userBase")
+@extends("layouts.user")
 @section('titre')
     ACCUEIL
 @endsection

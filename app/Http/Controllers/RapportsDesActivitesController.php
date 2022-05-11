@@ -16,7 +16,7 @@ class RapportsDesActivitesController extends Controller
     public function index()
     {
         $rapportsDesActivites=RapportsDesActivites::all();
-        return view('rapportsDesActivites.rapportsDesActivites',['rapportsDesActivites'=>$rapportsDesActivites]);
+        return view('admin.rapportsDesActivites.rapportsDesActivites',['rapportsDesActivites'=>$rapportsDesActivites]);
     }
 
     /**
@@ -26,7 +26,7 @@ class RapportsDesActivitesController extends Controller
      */
     public function create()
     {
-        return view('rapportsDesActivites.createRapport',["activites"=>Activites::all()]);
+        return view('admin.rapportsDesActivites.createRapport',["activites"=>Activites::all()]);
     }
 
     /**
@@ -81,7 +81,7 @@ class RapportsDesActivitesController extends Controller
         // $rapportsDesActivites = RapportsDesActivites::findOfFail($id);
 
 
-        return view('rapportsDesActivites.modifierRapport',['unRapportsDesActivites'=>$rapportsDesActivites,'activites'=>Activites::all()]);
+        return view('admin.rapportsDesActivites.modifierRapport',['unRapportsDesActivites'=>$rapportsDesActivites,'activites'=>Activites::all()]);
     }
 
     /**

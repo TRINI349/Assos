@@ -1,4 +1,4 @@
-@extends('layouts.userBase')
+@extends('layouts.user')
 @section('titre')
 HISTOIRE
 @endsection

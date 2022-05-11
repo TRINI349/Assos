@@ -15,7 +15,7 @@ class PartenairesController extends Controller
     public function index()
     {
         $partenaires=Partenaires::all();
-        return view('partenaire.partenaire',['partenaires'=>$partenaires]);
+        return view('admin.partenaire.partenaire',['partenaires'=>$partenaires]);
     }
 
     /**
@@ -25,7 +25,7 @@ class PartenairesController extends Controller
      */
     public function create()
     {
-        return view ('partenaire.createPartenaire');
+        return view ('admin.partenaire.createPartenaire');
     }
 
     /**
@@ -74,7 +74,7 @@ class PartenairesController extends Controller
     {
         $partenaires=Partenaires::find($id);
 
-        return view('partenaire.modifierPartenaire', ["unPartenaire"=>$partenaires]);
+        return view('admin.partenaire.modifierPartenaire', ["unPartenaire"=>$partenaires]);
     }
 
     /**

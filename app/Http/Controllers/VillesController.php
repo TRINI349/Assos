@@ -16,7 +16,7 @@ class VillesController extends Controller
     {
 
         $villes=Villes::all();
-        return view('ville.ville',['villes'=>$villes]);
+        return view('admin.ville.ville',['villes'=>$villes]);
     }
 
     /**
@@ -26,7 +26,7 @@ class VillesController extends Controller
      */
     public function create()
     {
-        return view('ville.createVille');
+        return view('admin.ville.createVille');
     }
 
     /**
@@ -75,7 +75,7 @@ class VillesController extends Controller
     {
         // $villes = Villes::find($id);
 
-        return view('ville.modifierVille', ["uneVille"=>$ville]);
+        return view('admin.ville.modifierVille', ["uneVille"=>$ville]);
     }
 
     /**

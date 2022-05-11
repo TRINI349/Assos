@@ -19,7 +19,7 @@ class ActionsController extends Controller
     {
         $actions=Actions::paginate(4);
        // dd($action);
-                return view('action.action',["actions"=>$actions]);
+        return view('admin.action.action',["actions"=>$actions]);
     }
 
 
@@ -32,7 +32,7 @@ class ActionsController extends Controller
     public function create()
     {
 
-        return view('action.createAction',["activites"=>Activites::all()]);
+        return view('admin.action.createAction',["activites"=>Activites::all()]);
     }
 
     /**
@@ -93,7 +93,7 @@ class ActionsController extends Controller
 
         //Afficher un formulaire modification pré-rempli
 
-        return view('action.modifierAction', ["uneAction"=>$actions]);
+        return view('admin.action.modifierAction', ["uneAction"=>$actions]);
     }
 
 

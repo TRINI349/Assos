@@ -1,4 +1,4 @@
-@extends('layouts.userBase')
+@extends('layouts.user')
 @section('titre')
 NOS ACTIONS
 @endsection
@@ -13,14 +13,14 @@ NOS ACTIONS
 
                 <div class="col">
                     <div class="card">
-                        <img src={{$actions->image}} class="card-img-top" alt="...">
+                        <img src="{{$uneAction->image}}" class="card-img-top" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{$actions->titre}}</h5>
+                            <h5 class="card-title">{{$uneAction->titre}}</h5>
                             <ul class="list-group list-group-flush">
-                                <li class="list-group-item">{{$actions->date}}</li>
-                                <li class="list-group-item">{{$actions->adresseAction}}</li>
+                                <li class="list-group-item">{{$uneAction->date}}</li>
+                                <li class="list-group-item">{{$uneAction->adresseAction}}</li>
                             </ul>
-                            <p class="card-text">{{$actions->contenu}}</p>
+                            <p class="card-text">{{$uneAction->contenu}}</p>
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,7 @@ class Controller extends BaseController
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
     public function contactForm(){
        // dd(captcha_img());
-        return view("email.formulaire");
+        return view("site.formulaire_de_contact.formulaire");
     }
 
     public function envoyerEmail(Request $request){
