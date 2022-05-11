@@ -40,6 +40,26 @@ Route::get('/Accueil',function(){
 });
 
 
+Route::get('/Auto-ecole',function(){
+    return view('site.Auto-ecole');
+});
+
+Route::get('/Histoire',function(){
+    return view('site.Histoire');
+});
+
+Route::get('/NOS ACTIONS',function(){
+    return view('site.NOS ACTIONS');
+});
+
+Route::get('/NOS PARTENAIRES',function(){
+    return view('site.NOS PARTENAIRES');
+});
+
+Route::get('/Prévention-Spécialisée',function(){
+    return view('site.Prévention-Spécialisée');
+});
+
 Route::resource('action',ActionsController::class);
 Route::resource('activite',ActivitesController::class);
 Route::resource('rapportsDesActivites',RapportsDesActivitesController::class)->parameters(['rapportsDesActivites'=>'rapportsDesActivites']);

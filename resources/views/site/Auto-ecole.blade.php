@@ -69,7 +69,7 @@ AUTO ECOLE
             <p>L’apprenant éffectue des heures de conuite avec le moniteur agrée dans un véhicule automatique ou manuel.<br> l’objectif est de préparer l’apprenant au mieux à l’examen de conduite.</p>
         </div>
     </section>
-    <section class="bloc3">
+    <section class="bloc3" >
         <h2>
             ACCOMPAGNEMENT SOCIO PROFESSIONEL
         </h2>
