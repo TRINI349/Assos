@@ -34,7 +34,8 @@ use App\Http\Controllers\RapportsDesActivitesController;
 require __DIR__.'/auth.php';
 
 // site
-Route::get('/contact',[Controller::class,"contactForm"]);
+
+Route::get('/contact',[Controller::class,"contactForm"]);  //captcha dans le formulaire de contact
 Route::post('/contact',[Controller::class,"envoyerEmail"]);
 Route::get('refreshcaptcha',[Controller::class, 'refreshCaptcha'])->name('refreshcaptcha');
 
@@ -42,17 +43,17 @@ Route::get('/Accueil',function(){
     return view('site.Accueil');
 });
 
-Route::get('/Auto-ecole',function(){
-    return view('site.Auto-ecole');
+Route::get('/Auto-Ecole',function(){
+    return view('site.Auto-Ecole');
 });
 
 Route::get('/Histoire',function(){
     return view('site.Histoire');
 });
 
-Route::get('/NOS-ACTIONS',function(){
+Route::get('/Nos Actions',function(){
     $actions = Actions::paginate(4);
-    return view('site.NOS-ACTIONS')->with('actions', $actions);
+    return view('site.Nos-Actions')->with('actions', $actions);
 });
 
 Route::get('/NOS-PARTENAIRES',function(){
@@ -65,6 +66,8 @@ Route::get('/Prévention-Spécialisée',function(){
 
 
 // dashboard
+
+//
 Route::middleware('eAdmin')->group(function(){
     Route::resource('action',ActionsController::class);
     Route::resource('activite',ActivitesController::class);
@@ -73,7 +76,7 @@ Route::middleware('eAdmin')->group(function(){
     Route::resource('Role',RoleController::class);
     Route::resource('partenaire',PartenairesController::class);
 
-    Route::resource('user', UserController::class);
+    Route::resource('user', UserController::class)->except('show')->parameters(['user'=>'user']);
 
     Route::get('/dashboard',[AdminController::class,'dashboard']);
 });

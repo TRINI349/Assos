@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+body {
+    /* width: fit-content;
+/*max-width: 1440px;*/
+    font-family: "Roboto", sans-serif;
+    overflow-x: hidden;
+}
+
+.globalPS {
+    margin-top: 300px;
+}
+
+.titPS {
+    width: 700px;
+    margin-right: 50px;
+    margin-left: 50px;
+    margin-bottom: 50px;
+    color: #e2843a;
+    margin-top: 50px;
+}
+
+.PARPS {
+    color: white;
+    font-size: 21px;
+    line-height: 35px;
+    padding-left: 20px;
+    padding-right: 10px;
+}
+
+.blocPS {
+    background-color: #365492;
+    height: 650px;
+    margin-left: 150px;
+    margin-right: 50px;
+}
+
+#imagePS {
+    width: 700px;
+    height: 650px;
+}
+
+.GlobalIM {
+    margin-top: 150px;
+}
+
+.titreIM {
+    margin-left: 300px;
+    padding-left: 0px;
+    width: 100%;
+    color: black;
+}
+
+#imageIM {
+    width: 900px;
+    height: 500px;
+    margin-left: 450px;
+    margin-top: 100px;
+    object-fit: cover;
+}
+
+.blocIM {
+    background-color: #365492;
+    height: 680px;
+    padding-right: 0px;
+    padding-left: 0px;
+    margin-right: 0px;
+    margin-left: 0px;
+}
+
+.blocim {
+    background-color: #365492;
+    margin-right: 200px;
+}
+
+.blocIM p {
+    margin-top: 100px;
+    margin-bottom: 350px;
+    font-size: 22px;
+    line-height: 35px;
+    background-color: #365492;
+    color: white;
+    height: 570px;
+    padding-top: 50px;
+    padding-right: 420px;
+    margin-left: 200px;
+    padding-left: 100px;
+    padding-bottom: 50px;
+}
+
+.blocIM p strong {
+    color: #e2843a;
+}
+
+.globalSOS {
+    margin-left: 300px;
+    margin-top: 100px;
+}
+
+.SOSTIT {
+    margin-left: 250px;
+    margin-bottom: 50px;
+    background-color: #365492;
+}
+
+.SOSPAR p {
+    margin-left: 200px;
+    margin-bottom: 100px;
+    font-size: 22px;
+    line-height: 40px;
+    padding-bottom: 50px;
+}
+
+.d-block {
+    object-fit: cover;
+    margin-right: 200px;
+}
+
+.blocSOS {
+    background-color: #365492;
+    color: white;
+    padding-top: 30px;
+    height: 120px;
+    margin-bottom: 100px;
+    height: 170px;
+}
+
+.SOSIM {
+    margin-bottom: 150px;
+}

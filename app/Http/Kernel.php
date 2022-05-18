@@ -65,6 +65,8 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
-        'eAdmin'=>OnlyAdmin::class,
+        'eAdmin'=>OnlyAdmin::class, ///
     ];
 }
+
+//1 étape crer un middleware onlyAdmin qui va automatiquement contenir une class onlyAdmin et dans le kernel quand on sert de la class OnlyAdmin fait appel a eadmin

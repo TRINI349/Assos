@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
 
 class UserController extends Controller
 {
@@ -27,7 +29,8 @@ class UserController extends Controller
     public function create()
     {
 
-        return view('admin.user.createUser',["role"=>Role::all()]);
+        return view('admin.user.createUser',["roles"=>Role::all()]);
+
     }
 
     /**
@@ -36,18 +39,23 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, User $user)
+    public function store(Request $request)
     {
+        $mdp = bcrypt($request->input('password'));
         $attributs=$request->validate(
             [
                 "nom"=>"required|string",
                 "prenom"=>"required|string",
                 "email"=>"required|string",
-                "idRoles"=>"numeric|exists:Role,id|required"
+                "password"=>"required|min:8",
+                "idRoles"=>"numeric|exists:Roles,id|required",
+
             ]);
 
+            $attributs["password"]=$mdp; //
             //Enregistrement de l'action dans la table
         User::create($attributs);
+
 
             //redirection vers le dashboard
         return redirect("/user");
@@ -84,22 +92,24 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,User $id)
+    public function update(Request $request,User $user)
 
 
     {
 
-        $user=User::find($request->id);
+        //$user=User::find($request->id);
+       // $mdp = bcrypt($request->input('password'));
         $attributs=$request->validate(
             [
                 "nom"=>"required|string",
                 "prenom"=>"required|string",
                 "email"=>"required|string",
-                "idRoles"=>"numeric|exists:Role,id|required"
+                //"password"=>"required|min:8",
+                //"idRoles"=>"numeric|exists:Roles,id|required"
             ]);
 
 
-
+            //$attributs["password"]=$mdp;
         $user->update($attributs);
         //Le message flash
         session()->flash("success","$user->user a bien était modifier ! ");
@@ -112,8 +122,9 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($user)
+    public function destroy($id)
     {
+        $user = User::findOrFail($id);
         $user->delete();
         return redirect('/user')->with('message', 'user supprimer');
     }

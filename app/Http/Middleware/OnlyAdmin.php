@@ -21,6 +21,7 @@ class OnlyAdmin
     {
 
         $utilisateur=auth()->user(); //auth est une function qui recupere les information d'authentification
+        //les infos
 
         if($utilisateur==null)
 
@@ -31,6 +32,7 @@ class OnlyAdmin
     }
 
     elseif(auth()->user()->role->nom!='admin' && auth()->user()->role->nom!='superAdmin')
+    //si encore t'as un utilisateur authentifier dont le role n est pas admin et si l'utilisateur authentifier don le role n est pas superadmin bloque le passage
 
 
     {

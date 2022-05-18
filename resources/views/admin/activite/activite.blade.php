@@ -7,7 +7,7 @@ Gestion des activites
 @section("contenu")
 <h1 class="my-2">Les activites</h1>
 <a class="btn btn-primary mb-2" href="activite/create">Ajouter une nouvelle activite</a>
- <table class="table text-light">
+ <table class="table my-4 text-dark">
      <thead>
          <tr>
             <th>Id</td>

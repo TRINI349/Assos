@@ -1,7 +1,7 @@
 
 @extends("layouts.user")
 @section('titre')
-    Auto-ecole
+    Auto-Ecole
 @endsection
 @section('contenu')
     <!-- 2nd section: -->

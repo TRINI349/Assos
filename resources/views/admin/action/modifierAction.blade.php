@@ -11,7 +11,7 @@ Modification D'une Action
             @csrf
             @method("put")
 
-            <input type="hidden" name="id" value="{{$uneAction->id}}">
+            <input type="hidden" name="id" value="{{$uneAction->id}}"><!--pour savoir de quel action nous parlons et pour trouver une action par son id et on le cache car on va pas le modifier -->
             <div class="row mb-2">
                 <label for="titre">TITRE</label>
                 <input name="titre" minlength="2" maxlength="100" required type="text" class="form-control" id="titre"
@@ -19,6 +19,7 @@ Modification D'une Action
                 @error("titre")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
+                <!---->
             </div>
 
             <div class="row mb-2">

@@ -1,6 +1,6 @@
 @extends('layouts.user')
 @section('titre')
-NOS ACTIONS
+Nos-Actions
 @endsection
 @section('contenu')
 

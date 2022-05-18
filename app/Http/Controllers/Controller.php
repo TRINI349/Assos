@@ -40,13 +40,14 @@ class Controller extends BaseController
         //     $message->replyTo($data["email"],);
         //     $message->subject('GretaVoyages '.$data["sujet"]);
         //     $message->priority(3);
-
+//apres je change l @mail to par celle de l'assos changerle smtp dans .env et changer
         // });
+        return redirect('Accueil');
     }
 
 
 
-    public function refreshCaptcha()
+    public function refreshCaptcha()  //pour changer le code  et dans vendor mews/capcha on peut la taille de de l'image du capcha
     {
         return response()->json(['captcha'=> captcha_img()]);
     }

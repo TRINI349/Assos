@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
                 'idActivites'=>'2',
                 'titre'=>'Chantier séjour ',
                 'dateAction'=>'2021/08/01',
-                'contenu'=>'Nous avons co-construit avec des jeunes de Villiers sur marne un projet de séjour.
+                'texte'=>'Nous avons co-construit avec des jeunes de Villiers sur marne un projet de séjour.
                 Les jeunes ont, début juillet, participé à un chantier éducatif de peinture sur leur quartier pour pouvoir financer des vacances.
                 Fin juillet nous sommes partis avec ce groupe de 6 jeunes en camping en Vendée autour d’activités sportives.
                     ',

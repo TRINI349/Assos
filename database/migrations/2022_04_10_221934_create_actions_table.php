@@ -19,7 +19,7 @@ return new class extends Migration
             $table->date('dateAction');
             $table->string('titre',200);
             $table->string('adresseAction', 300);
-            $table->text('contenu');
+            $table->text('texte');
             $table->string('image');
 
             $table->timestamps();

@@ -1,45 +1,152 @@
-* {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
+.global1 {
+    margin-top: 0px;
+}
+
+.bloc1 {
+    display: flex;
+    flex-direction: row;
+    padding-top: 100px;
+    margin-top: 150px;
+    margin-right: 350px;
+    margin-left: 400px;
+}
+
+.abbIMage {
+    width: 400px;
+}
+
+.titre {
+    background-color: #365492;
+}
+
+.titreh1 {
+    margin-top: 80px;
+    margin-bottom: 80px;
+    margin-right: 170px;
+    margin-left: 150px;
+    width: 700px;
+    color: white;
+}
+
+.titre p {
+    font-size: 25px;
+    height: 300px;
+    padding-left: 50px;
+    margin-left: 0px;
+    margin-right: 0px;
+    padding-right: 30px;
+    color: white;
 }
 
 
-/* .main{
-    max-width: 1280px;
-    margin: 0 auto;
+/**************************Caroussel/********************/
+
+.global2 {
+    background-color: /*#ededef;*/
+    /*rgb(248, 217, 90);*/
+    #365492;
+}
+
+#carouselExampleDark {
+    width: 800px;
+    margin-right: 500px;
+    margin-left: 600px;
+    margin-top: 10rem;
+}
+
+.carousel-indicators {
+    height: 500px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+}
+
+.d-block {
+    width: 800px;
+    height: 600px;
+}
+
+
+/********************************************************Global3*/
+
+.SOS {
+    height: 500px;
+    width: 500px;
+    object-fit: cover;
+}
+
+.AEcole {
+    width: 900px;
+    object-fit: cover;
+    margin-left: 500px;
+    height: 500px;
+}
+
+.Auto {
+    height: 300px;
+    width: 700px;
+    object-fit: cover;
+}
+
+.SOSLAIT {
+    margin-left: 0px;
+    width: 624px;
+}
+
+.global3,
+.global4 {
+    margin-top: 150px;
+}
+
+.PS,
+.AUTO {
+    width: 924px;
+    padding-left: 150px;
+    background-color: #365492;
+}
+
+.titrePS {
+    width: 500px;
+    margin-left: 40px;
     margin-top: 100px;
-    margin-left: 250px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: rgb(89, 3, 20);
-} */
-
-#logoImg {
-    display: flex;
-    justify-content: flex-start;
-    /* padding-left: 0px;
-    margin-left: 0px; */
-    /* background-color: rgb(246, 223, 24); */
+    color: white;
 }
 
-.right {
-    padding-top: 450px;
+.PS P {
+    width: 500px;
+    margin-left: 40px;
+    margin-top: 50px;
+    color: white;
+    font-size: 22px;
 }
 
-#logoArea {
-    display: flex;
-    justify-content: space-between;
+.AUTO P {
+    width: 500px;
+    color: white;
+    font-size: 22px;
+    height: 300px;
+    margin-top: 0px;
+    margin-left: 70px;
+    margin-bottom: 0px;
 }
 
-#lconArea {
-    display: flex;
-    justify-content: end;
+.AUTO {
+    margin-left: 105px;
+    height: 300px;
 }
 
-.contactIcon {
-    display: flex;
-    justify-content: end;
-    width: 30px;
-    height: 30px;
-    padding-left: 10px;
+.global4 {
+    margin-bottom: 0px;
+}
+
+.titreAE {
+    margin-top: 50px;
+    margin-left: 70px;
+    color: white;
+}
+
+.AUTO P {
+    margin-top: 0px;
+    margin-left: 70px;
+    margin-bottom: 0px;
 }

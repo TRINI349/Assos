@@ -7,15 +7,15 @@ Modification D'un utulisateur
 <div class="container my-2">
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
         <h1>Fomulaire de modification des utulisateurs</h1>
-        <form action="/Role/{{$unRole->id}}" method="post" enctype="multipart/form-data">
+        <form action="/user/{{$unUser->id}}" method="post" enctype="multipart/form-data">
             @csrf
             @method("put")
 
-            <input type="hidden" name="id" value="{{$unRole->id}}">
+            <input type="hidden" name="id" value="{{$unUser->id}}">
             <div class="row mb-2">
                 <label for="nom">NOM</label>
                 <input name="nom" minlength="2" maxlength="100" required type="text" class="form-control" id="nom"
-                    placeholder="le role" value="{{$unUser->nom}}">
+                    placeholder="l'utilisateur" value="{{$unUser->nom}}">
                 @error("nom")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
@@ -31,10 +31,10 @@ Modification D'un utulisateur
             </div>
 
             <div class="row mb-2">
-                <label for="mail">MAIL</label>
-                <input name="mail" minlength="2" maxlength="100" required type="text" class="form-control" id="mail"
-                    placeholder="Le mail" value="{{$unUser->mail}}">
-                @error("mail")
+                <label for="email">E-MAIL</label>
+                <input name="email" minlength="2" maxlength="100" required type="email" class="form-control" id="email"
+                    placeholder="Le email" value="{{$unUser->email}}">
+                @error("email")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>

@@ -7,7 +7,7 @@ Gestion des rapports d'activites
 @section("contenu")
 <h1 class="my-2">Les rapports des activites</h1>
 <a class="btn btn-primary mb-2" href="rapportsDesActivites/create">Ajouter un nouveau rapport d'activite</a>
- <table class="table my-4 text-light">
+ <table class="table my-4 text-dark">
      <thead>
          <tr>
             <th>Id</td>
