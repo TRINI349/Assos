@@ -14,6 +14,7 @@ class Kernel extends HttpKernel
      *
      * @var array<int, class-string|string>
      */
+    //ce middleware seront utiliser dans n'importe quel requette
     protected $middleware = [
         // \App\Http\Middleware\TrustHosts::class,
         \App\Http\Middleware\TrustProxies::class,

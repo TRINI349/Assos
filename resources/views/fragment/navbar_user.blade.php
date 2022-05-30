@@ -23,7 +23,7 @@
                 <div class="collapse2 navbar-collapse " id="navbarSupportedContent ">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ">
                         <li class="nav-item mx-3 ">
-                            <a href="{{URL::to('/dashboard')}}"  id="connexion "><i class="fa-solid fa-right-to-bracket "></i></a></li>
+                            <a href="{{URL::to('/login')}}"  id="connexion "><i class="fa-solid fa-right-to-bracket "></i></a></li>
                         <li class="nav-item mx-3 ">
                             <a href="#footer " id="teleph "><i class="fa-solid fa-phone "></i></a></li>
                         <li class="nav-item mx-3 ">

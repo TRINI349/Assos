@@ -6,7 +6,7 @@ Modification D'un utulisateur
 @section("contenu")
 <div class="container my-2">
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
-        <h1>Fomulaire de modification des utulisateurs</h1>
+        <h1 class="titre py-5">Modifier un  utilisateur</h1>
         <form action="/user/{{$unUser->id}}" method="post" enctype="multipart/form-data">
             @csrf
             @method("put")
@@ -32,7 +32,7 @@ Modification D'un utulisateur
 
             <div class="row mb-2">
                 <label for="email">E-MAIL</label>
-                <input name="email" minlength="2" maxlength="100" required type="email" class="form-control" id="email"
+                <input value="{{old("email")}}" name="email" minlength="2" maxlength="100" required type="email" class="form-control" id="email"
                     placeholder="Le email" value="{{$unUser->email}}">
                 @error("email")
                 <div class="text-danger">{{$message}}</div>

@@ -27,14 +27,14 @@ class OnlyAdmin
 
      {
 
-        abort(403);
+        abort(403);  //page non trouve forbiden t as pas le droit d'accéder pour raison de sécurite  ca dire la page existe mais t as pas le droit
 
     }
 
     elseif(auth()->user()->role->nom!='admin' && auth()->user()->role->nom!='superAdmin')
     //si encore t'as un utilisateur authentifier dont le role n est pas admin et si l'utilisateur authentifier don le role n est pas superadmin bloque le passage
 
-
+//pour utiliser le middleware faut regarder le fichier le kernel pour au
     {
 
         abort(403);

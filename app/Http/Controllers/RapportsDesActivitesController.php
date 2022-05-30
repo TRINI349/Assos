@@ -16,7 +16,7 @@ class RapportsDesActivitesController extends Controller
     public function index()
     {
         $rapportsDesActivites=RapportsDesActivites::all();
-        return view('admin.rapportsDesActivites.rapportsDesActivites',['rapportsDesActivites'=>$rapportsDesActivites]);
+        return view('admin.rapportsDesActivites.rapportsDesActivites',['lesRapportsDesActivites'=>$rapportsDesActivites]);
     }
 
     /**
@@ -26,7 +26,7 @@ class RapportsDesActivitesController extends Controller
      */
     public function create()
     {
-        return view('admin.rapportsDesActivites.createRapport',["activites"=>Activites::all()]);
+        return view('admin.rapportsDesActivites.createRapport',["lesActivites"=>Activites::all()]);
     }
 
     /**
@@ -42,7 +42,7 @@ class RapportsDesActivitesController extends Controller
         $attributs = $request->validate([
             'annee' => 'string|required',
             'lien' => 'string',
-            'idActivites'=>'numeric|exists:activites,id|required' //verifier le id activite correspond bien à un id dans la  table activite
+            'activite_id'=>'numeric|exists:activites,id|required' //verifier le id activite correspond bien à un id dans la  table activite
         ]);
 
             // $rapportsDesActivites = new RapportsDesActivites();
@@ -52,7 +52,12 @@ class RapportsDesActivitesController extends Controller
                 // return redirect('/rapportsDesActivites')->with('message', 'Rapport ajouter');
 
             $rapportsDesActivites=RapportsDesActivites::create($attributs);
+            //1je stoke mes mes requettes dans la variable attributs
+            //on peut aussi les recupere dans une variable
+            //2j'utilise la methode statique create
             //Le message flash
+            session()->flash("success","$rapportsDesActivites->annee a bien était modifier ! ");
+
 
             return redirect("/rapportsDesActivites");
 
@@ -97,11 +102,11 @@ class RapportsDesActivitesController extends Controller
     // $rapportsDesActivites=RapportsDesActivites::find($request->id);
 
     $attributs = $request->validate(
-
+//si j envoie le formulaire sera sous forme d'un arret assosiatif ou je peux consulter mes attribut avec le dd($attributs)
     [
         'annee'=>'required|min:2|max:100|string',
         'lien'=>'string',
-        'idActivites'=>'numeric|exists:activites,id|required'
+        //'activite_id'=>'numeric|exists:activites,id|required'
     ]);
 
     $rapportsDesActivites->update($attributs);

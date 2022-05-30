@@ -16,7 +16,7 @@ class ActivitesController extends Controller
     public function index()
     {
         $activites=Activites::all();
-        return view('admin.activite.activite',["activites"=>$activites]);
+        return view('admin.activite.activite',["lesActivites"=>$activites]);
     }
 
     /**
@@ -26,7 +26,7 @@ class ActivitesController extends Controller
      */
     public function create()
     {
-        return view('admin.activite.createActivite',["villes"=>Villes::all()]);
+        return view('admin.activite.createActivite',["lesVilles"=>Villes::all()]);
     }
 
     /**
@@ -42,13 +42,14 @@ class ActivitesController extends Controller
         $attributs=$request->validate(
             ["type"=>"required|string",
                 "nomVille"=>"string|required",
-                "idVilles"=>"numeric|required"
+                "ville_id"=>"numeric|required"
             ]);
-
+//un arret associatif
             //Enregistrement de l'action dans la table
         Activites::create($attributs);
-
+//methode statique une class :: operateur statique et la methode est appel sur une class pas sur un objet designe par une fleche
             //redirection vers le dashboard
+            session()->flash("success l'activite a bien était ajouté ! ");
         return redirect("/activite");
     }
 
@@ -59,7 +60,7 @@ class ActivitesController extends Controller
      * @param  \App\Models\ActiviteController  $activiteController
      * @return \Illuminate\Http\Response
      */
-    public function show(Activites $activite)
+    public function show(Activites $activites)
     {
        //
     }
@@ -71,9 +72,13 @@ class ActivitesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function edit($id)
+    //public function edit($id)
+    public function edit( Activites $activites,$id)
+    //$activites nom du parametre et il faut le tipe avec la classe pour récuperer de tous les pays
     {
-        $activites=Activites::find($id);
+        $activites=Activites::find($id);  //on peut utiliser find ou get pour retrouver un objet par son  $id
+        //
+        //findOrfail si ca noutrve pas l'id il affiche une page 404
 
         return view('admin.activite.modifierActivite', ["uneActivite"=>$activites]);
     }
@@ -86,12 +91,12 @@ class ActivitesController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function update(Request $request,Activites $id)
+    public function update(Request $request,Activites $activites)
     {
 
 
 
-        $activites=Activites::find($request->id);
+        //$activites=Activites::find($request->id);
 
         $attributs = $request->validate(
 

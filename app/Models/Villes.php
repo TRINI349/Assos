@@ -9,9 +9,9 @@ class Villes extends Model
 {
     use HasFactory;
     protected $fillable=['nom'];
-
-    public function Activites(){
-        return $this->hasMany(Activites::class);
+// on ai entrain de manipuler des class model pas des tables
+    public function activites(){
+        return $this->hasMany(Activites::class,"activite_id");
     }
 }
 

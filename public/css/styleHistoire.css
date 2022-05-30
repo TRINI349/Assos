@@ -1,0 +1,45 @@
+.global1 {
+    margin-top: 250px;
+}
+
+.blocP {
+    font-size: 23px;
+}
+
+.illus {
+    width: 700px;
+    height: 450px;
+    object-fit: contain;
+}
+
+.global2 {
+    margin-top: 100px;
+    background-color: #365492;
+}
+
+.bloc1 {
+    margin-left: 600px;
+}
+
+.global3 {
+    margin-top: 150px;
+    margin-bottom: 150px;
+}
+
+.bloc2 {
+    /* padding-top: 150px;
+    padding-left: 80px;*/
+}
+
+#mondImma {
+    width: 700px;
+    height: 670px;
+    object-fit: cover;
+}
+
+.bloc3 {
+    background-color: #365492;
+    color: white;
+    padding: 50px;
+    font-size: 23px;
+}

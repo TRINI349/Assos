@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idRoles')->constrained('roles','id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('role_id')->constrained("roles")->onDelete('cascade')->onUpdate('cascade');
             $table->string('nom');
             $table->string('prenom');
             $table->string('email')->unique();
@@ -24,6 +24,11 @@ return new class extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        //foreignId est une methode et en parametre en met( le nom de la classe(ausingulier) et _id) et elle fait réference à la table en utulisant la methode constrained()roles et pour le supprimer faut utiliser la methode onDelete('cascade')c a dire si jamais je veux supprimer un role bah ts les utulisateur devront etre supprimer avec ce role
+
+
+        //et la migration duser nous avons une clé etranger qui fait reference à la table role donc ce qu il faut faire c est de l'excuter apres ou de changer la date
     }
 
     /**

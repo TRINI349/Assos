@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Activites;
 use App\Models\Partenaires;
 use Illuminate\Http\Request;
 
@@ -14,8 +15,8 @@ class PartenairesController extends Controller
      */
     public function index()
     {
-        $partenaires=Partenaires::all();
-        return view('admin.partenaire.partenaire',['partenaires'=>$partenaires]);
+        $partenaires=Partenaires::paginate(20);
+        return view('admin.partenaire.partenaire',['lesPartenaires'=>$partenaires]);
     }
 
     /**
@@ -23,9 +24,9 @@ class PartenairesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create() //la function create dans laravel refait les requette derriere comme create sql dans mvc
     {
-        return view ('admin.partenaire.createPartenaire');
+        return view ('admin.partenaire.createPartenaire',["lesActivites"=>Activites::all()]);
     }
 
     /**
@@ -39,7 +40,11 @@ class PartenairesController extends Controller
 
         //Validation des champs/attributs
         $attributs=$request->validate(
-            ["nom"=>"required|string"]);
+            ["nom"=>"required|string",
+            "type"=>"required|string",
+            'activite_id'=>'numeric|exists:activites,id|required'
+            ]);
+
 
             //Enregistrement de l'action dans la table
        $partenaires=Partenaires::create($attributs);
@@ -74,6 +79,9 @@ class PartenairesController extends Controller
     {
         $partenaires=Partenaires::find($id);
 
+
+
+
         return view('admin.partenaire.modifierPartenaire', ["unPartenaire"=>$partenaires]);
     }
 
@@ -88,13 +96,18 @@ class PartenairesController extends Controller
     {
         $partenaires=Partenaires::find($request->id);
 
+
         $attributs = $request->validate(
 
         [
-            "nom"=>"string|required"
+            "nom"=>"string|required",
+            "type"=>"string|required",
+           // 'activite_id'=>'numeric|exists:activites,id|required'
+
         ]);
 
         $partenaires->update($attributs);
+
         //Le message flash
         session()->flash("success","$partenaires->nom a bien était modifier ! ");
         return redirect("/partenaire");

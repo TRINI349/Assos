@@ -16,7 +16,7 @@ class VillesController extends Controller
     {
 
         $villes=Villes::all();
-        return view('admin.ville.ville',['villes'=>$villes]);
+        return view('admin.ville.ville',['lesVilles'=>$villes]);
     }
 
     /**

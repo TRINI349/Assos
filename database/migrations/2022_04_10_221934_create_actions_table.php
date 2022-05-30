@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('actions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idActivites')->constrained('activites','id')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('activite_id')->constrained('activites')->onDelete('cascade')->onUpdate('cascade');
             $table->date('dateAction');
             $table->string('titre',200);
             $table->string('adresseAction', 300);
-            $table->text('texte');
+            $table->text('contenu');
             $table->string('image');
 
             $table->timestamps();

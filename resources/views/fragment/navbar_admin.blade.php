@@ -2,12 +2,12 @@
 
     <div class="container-fluid">
         <!-- Navbar Brand-->
-        <a class="navbar-brand ps-2 text-warning "><img class="navbar-brand" src="./images/EmmausSynergie.jpg" alt="logo"></a>
+        <a class="navbar-brand ps-2 text-warning "><img class="navbar-brand" id="logoEmmaus" src="./storage/images/EmmauslogoRPF.jpg" alt="logo"></a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item  mx-5"><a class="nav-link active text-warning" aria-current="page" href="{{URL::to('/Accueil')}}">ACCUEIL</a></li>
                 <li class="nav-item  mx-5"><a class="nav-link active text-warning" aria-current="page" href="{{URL::to('/Histoire')}}">HISTOIRE</a></li>
-                <li class="nav-item  mx-5"><a class="nav-link  text-warning" aria-current="page" href="{{URL::to('/Nos-Action')}}">NOS-ACTION</a></li>
+                <li class="nav-item  mx-5"><a class="nav-link  text-warning" aria-current="page" href="{{URL::to('/pageActions')}}">NOS-ACTION</a></li>
                 <li class="nav-item dropdown">
                     <a class="nav-link  text-md-center text-lg-center dropdown-toggle mx-5 text-warning" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">ACTIVITE</a>
                     <ul class="dropdown-menu bg-dark " aria-labelledby="navbarDropdown">
@@ -65,7 +65,7 @@
                         <div class="sb-nav-link-icon"><i class="fa-solid fa-id-card"></i></div>
                         Villes
                     </a>
-@if (auth()->user()->role->nom=="superAdmin")
+@if (auth()->user()->Role->nom=="superAdmin")
 
 
                     <a class="nav-link  text-warning  mt-4 mb-4" href="{{URL::to('/user')}}">

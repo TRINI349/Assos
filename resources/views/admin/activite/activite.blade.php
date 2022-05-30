@@ -5,9 +5,9 @@ Gestion des activites
 @endsection
 
 @section("contenu")
-<h1 class="my-2">Les activites</h1>
-<a class="btn btn-primary mb-2" href="activite/create">Ajouter une nouvelle activite</a>
- <table class="table my-4 text-dark">
+<h1 class=" display-4 my-5 "><strong>Les activites</strong></h1>
+<a class="ajout1 btn btn-dark mb-5" href="activite/create">Ajouter Une Activite</a>
+ <table class="table  text-dark">
      <thead>
          <tr>
             <th>Id</td>
@@ -16,20 +16,20 @@ Gestion des activites
          </tr>
      </thead>
      <tbody>
-         @foreach ($activites as $uneActivite )
+         @foreach ($lesActivites as $uneActivite )
             <tr>
                 <td>{{$uneActivite->id}}</td>
                 <td>{{$uneActivite->type}}</td>
                 <td>{{$uneActivite->nomVille}}</td>
                 <td class="col-4 col-lg-3">
                     <div class="row">
-                    <a class="btn btn-primary col mx-2" href="activite/{{$uneActivite->id}}/edit">Modifier</a>
+                    <a class="btn btn-dark col mx-2 my-3" href="activite/{{$uneActivite->id}}/edit">Modifier</a>
                     <form class="col row mx-2" action="activite/{{$uneActivite->id}}" method="post">
 
                         @csrf
                         @method("delete")
                         <input type="hidden" name="id">
-                        <button class="btn btn-primary">Supprimer</button>
+                        <button class="btn btn-warning my-3">Supprimer</button>
                     </form>
                 </div>
                 </td>

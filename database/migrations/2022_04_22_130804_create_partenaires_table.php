@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('partenaires', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
+            $table->string('type');
             $table->timestamps();
         });
     }

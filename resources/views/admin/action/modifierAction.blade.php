@@ -6,7 +6,7 @@ Modification D'une Action
 @section("contenu")
 <div class="container my-2">
     <div class="col-12 col-sm-10 col-md-6 col-lg-4 mx-auto">
-        <h1>Fomulaire de modification d'une Action</h1>
+        <h1 class="titreh1 py-4">Modifier une Action</h1>
         <form action="/action/{{$uneAction->id}}" method="post" enctype="multipart/form-data">
             @csrf
             @method("put")
@@ -24,7 +24,7 @@ Modification D'une Action
 
             <div class="row mb-2">
                 <label for="dateAction">DATE ACTION</label>
-                <input name="dateAction" min="0" required type="number" class="form-control" id="dateAction"
+                <input name="dateAction" min="0" required type="date" class="form-control" id="dateAction"
                     placeholder="indique la date de l'action" value="{{$uneAction->dateAction}}">
                 @error("dateAction")
                 <div class="text-danger">{{$message}}</div>
@@ -33,7 +33,7 @@ Modification D'une Action
 
             <div class="row mb-2">
                 <label for="adresseAction">ADRESSE ACTION</label>
-                <input name="adresseAction" minlength="4" required type="" class="form-control" id="adresseAction"
+                <input name="adresseAction" minlength="4" required type="text" class="form-control" id="adresseAction"
                     placeholder="indiquer l'adresse de l'action" value="{{$uneAction->adresseAction}}">
                 @error("adresseAction")
                 <div class="text-danger">{{$message}}</div>
@@ -41,23 +41,23 @@ Modification D'une Action
             </div>
 
             <div class="row mb-2">
-                <label for="contenue">CONTENUE</label>
-                <input name="contenue" minlength="4" required type="" class="form-control" id="contenue"
-                    placeholder="indiquer le contenue de l'action" value="{{$uneAction->contenue}}">
-                @error("contenue")<!--Pour afficher les messages d'erreurs pour les differents chanps on peut utiliser la directive error-->
+                <label for="contenu">CONTENU</label>
+                <input name="contenu" minlength="4" required type="text" class="form-control" id="contenu"
+                    placeholder="indiquer le contenue de l'action" value="{{$uneAction->contenu}}">
+                @error("contenu")<!--Pour afficher les messages d'erreurs pour les differents chanps on peut utiliser la directive error-->
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>
 
             <div class="row mb-2">
                 <label for="image">Image</label>
-                <input name="image" type="file" accept="image" class="form-control" id="image" placeholder="Rechercher une image">
+                <input name="image" type="file" accept="image" class="form-control" id="image" placeholder="Rechercher une image" value="{{$uneAction->image}}">
                 @error("image")
                 <div class="text-danger">{{$message}}</div>
                 @enderror
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-dark">Submit</button>
         </form>
     </div>
 </div>

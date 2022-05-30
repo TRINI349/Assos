@@ -23,7 +23,7 @@ class User extends Authenticatable
         'prenom',
         'email',
         'password',
-        'idRoles'
+        'role_id'
     ];
 
     /**
@@ -47,13 +47,13 @@ class User extends Authenticatable
     ];
 
     public function role(){
-        return $this->belongsTo(Role::class,'idRoles');
+        return $this->belongsTo(Role::class,"role_id");
     }
 
-    public function Activites()
+   // public function Activites()
 
-    {
-    return  $this->belongsToMany(Activites::class);
+    //{
+   // return  $this->belongsToMany(Activites::class);
 
-    }
+   // }
 }

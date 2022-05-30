@@ -27,15 +27,18 @@ use App\Http\Controllers\RapportsDesActivitesController;
 //     return view('welcome');
 // });
 
-// Route::get('/dashboard', function () {
-//     return view('admin.dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
+Route::get('/dashboard', function () {
+     return view('admin.dashboard'); })->middleware(['auth'])->name('dashboard');
+//php artisan make:middleware OnlyAdmin pour crer un middleware
 require __DIR__.'/auth.php';
 
 // site
-
-Route::get('/contact',[Controller::class,"contactForm"]);  //captcha dans le formulaire de contact
+//post pour la creation
+//la page welcome correspond à l apge laravel
+//blade c est un moteru de template qui va inserer des donnée qui va s'occuper de la logique de presentation
+//wuand on definie un argument dans une function on appel sa un callback
+//quand il lui precise un calback
+Route::get('/formulaire',[Controller::class,"contactForm"]);  //captcha dans le formulaire de contact
 Route::post('/contact',[Controller::class,"envoyerEmail"]);
 Route::get('refreshcaptcha',[Controller::class, 'refreshCaptcha'])->name('refreshcaptcha');
 
@@ -50,9 +53,9 @@ Route::get('/Auto-Ecole',function(){
 Route::get('/Histoire',function(){
     return view('site.Histoire');
 });
-
-Route::get('/Nos Actions',function(){
-    $actions = Actions::paginate(4);
+//si je veux mappe l'url faut que j 'envoie avec post
+Route::get('/pageActions',function(){
+    $actions = Actions::paginate(5);
     return view('site.Nos-Actions')->with('actions', $actions);
 });
 
@@ -69,12 +72,12 @@ Route::get('/Prévention-Spécialisée',function(){
 
 //
 Route::middleware('eAdmin')->group(function(){
-    Route::resource('action',ActionsController::class);
-    Route::resource('activite',ActivitesController::class);
-    Route::resource('rapportsDesActivites',RapportsDesActivitesController::class)->parameters(['rapportsDesActivites'=>'rapportsDesActivites']);
+    Route::resource('action',ActionsController::class)->except('show');
+    Route::resource('activite',ActivitesController::class)->except('show');
+    Route::resource('rapportsDesActivites',RapportsDesActivitesController::class)->except('show')->parameters(['rapportsDesActivites'=>'rapportsDesActivites']);//pour dire que c est ecrit dans le parametres c est activite et dans le controlleur c est aussi activite
     Route::resource('ville',VillesController::class)->except('show')->parameters(['ville'=>'ville']); //il y a des parametres cle et valeurs la cle correspond la resources et le valeurs le nom du parametres dans les methodes du controlleurs
-    Route::resource('Role',RoleController::class);
-    Route::resource('partenaire',PartenairesController::class);
+    Route::resource('Role',RoleController::class)->except('show');
+    Route::resource('partenaire',PartenairesController::class)->except('show');
 
     Route::resource('user', UserController::class)->except('show')->parameters(['user'=>'user']);
 

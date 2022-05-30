@@ -8,5 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Partenaires extends Model
 {
     use HasFactory;
-    protected $fillable=['nom'];
+    protected $fillable=['nom','type'];
+
+
+public function activitesPartenaires(){
+    return $this->belongsToMany(Activites::class,"activites")->using(Activites::class);
+}
 }

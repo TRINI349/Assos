@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('activites', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('idVilles')->constrained('villes','id')->onDelete('cascade');
+            $table->foreignId('ville_id')->constrained("villes")->onDelete('cascade');
             $table->string('type',100);
             $table->string('nomVille',100);
             $table->timestamps();

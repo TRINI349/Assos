@@ -9,25 +9,30 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Activites extends Model
 {
     use HasFactory;
-    protected $fillable=['type','nomVille','idVilles'];
+    protected $fillable=['type','nomVille','ville_id'];
 
-    public function Villes(){
-        return $this-> belongsTo(villes::class);
+    public function ville(){
+        return $this-> belongsTo(villes::class,"ville_id"); //id sa correspond à la clé primaire de la ville
     }
-
-    public function Actions(){
+//comme c est belongsto donc le nom de notre classmodel sera au singulier
+    public function actions(){
         return $this->hasMany(Actions::class);
+        //le premier c est la clé étrangers et le deuxieme c est l'id lui meme de la table
     }
 
-    public function RapportsDesactivites(){
+    public function rapportsDesactivites(){
         return $this->hasMany(RapportsDesActivites::class);
     }
 
-    public function Users()
-
-    {
-    return  $this->belongsToMany(User::class);
-
+    public function activitesPartenaires(){
+        return $this->belongsToMany(Partenaires::class,"partenaires")->using(Partenaires::class);
     }
+
+    //public function Users()
+
+    //{
+    //return  $this->belongsToMany(User::class);
+
+    //}//
 
 }

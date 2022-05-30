@@ -18,7 +18,7 @@ class UserController extends Controller
     public function index()
     {
         $user=User::all();
-        return view('admin.user.user',["user"=>$user]);
+        return view('admin.user.user',["lesUsers"=>$user]);
     }
 
     /**
@@ -29,7 +29,7 @@ class UserController extends Controller
     public function create()
     {
 
-        return view('admin.user.createUser',["roles"=>Role::all()]);
+        return view('admin.user.createUser',["lesRoles"=>Role::all()]);
 
     }
 
@@ -48,7 +48,7 @@ class UserController extends Controller
                 "prenom"=>"required|string",
                 "email"=>"required|string",
                 "password"=>"required|min:8",
-                "idRoles"=>"numeric|exists:Roles,id|required",
+                "role_id"=>"numeric|exists:Roles,id|required",
 
             ]);
 
